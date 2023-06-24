@@ -1,3 +1,11 @@
+# 專案介紹
+這是一個使用React.js製作的音樂欣賞以及編曲製作課程報名網站，瀏覽者在該網頁聽到喜歡的編曲可以下單購買。
+該網頁除了具備使用css語法設置的外觀樣式，也有引用animate.css的動畫，有RWD的設置，也有後端資料庫儲存購買者的購買商品資訊與報名課程資訊。
+該網頁採取前後端分離，透過node.js與axios進行資料的傳輸。
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
