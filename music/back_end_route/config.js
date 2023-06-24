@@ -10,13 +10,7 @@ app.use(express.static("public"));
 
 app.use(express.json());
 app.use(cors());
-// var connection = mySQL.createConnection({
-//   user: "root",
-//   password: "root",
-//   host: "localhost",
-//   port: 8889,
-//   database: "musicc",
-// });
+
 var connection = mySQL.createConnection({
   user: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
