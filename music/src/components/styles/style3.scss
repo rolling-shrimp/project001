@@ -1,0 +1,87 @@
+@import "./styles.scss";
+
+div#carouselExampleControls {
+  height: 70vh;
+
+  div.carousel-item {
+    height: 100%;
+  }
+  div.carousel-inner {
+    height: 100%;
+    img.d-blcok {
+      object-fit: cover;
+      height: 100%;
+    }
+  }
+  section#opp {
+    // position: relative;
+    border: 3px solid gray;
+    min-height: 73vh;
+  }
+}
+#thenav {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+#theul {
+  padding-left: 0;
+  margin-bottom: 0;
+}
+.section2 {
+  min-height: 70vh;
+
+  h1 {
+    color: white;
+    margin-bottom: 1rem;
+  }
+  div#section2-1 {
+    display: flex;
+    justify-content: center;
+    width: 50%;
+    figure {
+      border: white 2px solid;
+      margin-right: 1rem;
+
+      img {
+        height: 200px;
+        width: 200px;
+        object-fit: cover;
+        object-position: right;
+        border-bottom: white 2px solid;
+      }
+
+      figcaption {
+        &:hover {
+          cursor: pointer;
+        }
+        background-color: gray;
+        color: white;
+        text-align: center;
+        padding-top: 0.25rem;
+        padding-bottom: 0.25rem;
+        border: white 2px solid;
+        width: 200px;
+        a {
+          display: block;
+          width: 200px;
+          text-decoration: none;
+          color: white;
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 500px) {
+  body {
+    main {
+      section#opp {
+        display: none;
+        height: 20vh;
+        div#carouselExampleControls {
+          display: none;
+        }
+      }
+    }
+  }
+}

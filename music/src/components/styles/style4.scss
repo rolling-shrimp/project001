@@ -1,0 +1,149 @@
+@import "./styles_2.scss";
+
+section.thefirstsection {
+  h1 {
+    color: white;
+    margin-top: 2.5rem;
+  }
+}
+
+div.carouselExampleControls {
+  animation: bounceInUp;
+  animation-duration: 2s;
+  height: 70vh;
+  margin-top: 2rem;
+  //   position: absolute;
+  //   top: 8rem;
+  div.carousel-item {
+    height: 100%;
+  }
+  div.carousel-inner {
+    height: 100%;
+    img.thepic {
+      object-fit: cover;
+      height: 100%;
+    }
+  }
+}
+section#opp {
+  // position: relative;
+  display: flex;
+  // border: 3px solid gray;
+  min-height: 73vh;
+  justify-content: start;
+
+  // height: 73vh;
+
+  h1 {
+    color: white;
+    margin-top: 1rem;
+  }
+}
+// #thenav {
+//   padding: 0;
+//   margin: 0;
+//   box-sizing: border-box;
+// // }
+#theul {
+  padding-left: 0;
+}
+.section2 {
+  min-height: 70vh;
+  margin-top: 6rem;
+
+  h1 {
+    color: white;
+    margin-bottom: 1rem;
+  }
+  div.section2-1 {
+    display: flex;
+    justify-content: center;
+    width: 50%;
+    figure {
+      border: white 2px solid;
+      margin-right: 1rem;
+      animation: swing;
+      animation-duration: 2s;
+      &:hover {
+        animation: bounce 0.8s;
+      }
+
+      img {
+        height: 200px;
+        width: 200px;
+        object-fit: cover;
+        object-position: right;
+        border-bottom: white 2px solid;
+      }
+
+      figcaption {
+        &:hover {
+          cursor: pointer;
+        }
+        background-color: gray;
+        color: white;
+        text-align: center;
+        padding-top: 0.25rem;
+        padding-bottom: 0.25rem;
+        // border: white 2px solid;
+        width: 200px;
+        a {
+          display: block;
+          width: 200px;
+          text-decoration: none;
+          color: white;
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 594px) {
+  body {
+    main {
+      section.thefirstsection {
+        min-height: 22vh !important;
+        div.carouselExampleControls {
+          height: 23vh;
+          width: 90% !important;
+          div.carousel-inner {
+            height: 100%;
+            width: 100%;
+            div.carousel-inner {
+              width: 100%;
+              img {
+                object-fit: cover;
+                height: 100%;
+                width: 100%;
+              }
+            }
+          }
+        }
+      }
+      div.section2 {
+        background-color: gray !important;
+        h1 {
+          font-size: 1.5rem;
+          margin-top: 1.5rem;
+        }
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 30vh;
+
+        background-color: rgb(189, 188, 188);
+        div.section2-1 {
+          flex-direction: column;
+          align-items: center;
+          figure {
+            animation: swing;
+            animation-duration: 2s;
+            &:hover {
+              animation: bounce 0.8s !important;
+            }
+          }
+        }
+      }
+    }
+  }
+}
