@@ -9,6 +9,7 @@ const { JSON } = require("mysql/lib/protocol/constants/types");
 const { json } = require("body-parser");
 require("dotenv").config(); // 导入dotenv模块，加载环境变量
 const app = express();
+
 const passport = require("passport");
 require("./middlewear/passport")(passport);
 app.use(express.urlencoded({ extended: true }));
@@ -16,6 +17,7 @@ app.use(express.static("public"));
 
 app.use(express.json());
 app.use(cors());
+
 app.use("/api/account", authroute);
 app.use(
   "/api/member",
