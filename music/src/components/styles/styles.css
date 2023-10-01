@@ -12,6 +12,9 @@ body {
   background-position: center;
   background-size: cover;
 }
+body main.memee {
+  display: flex;
+}
 body header {
   min-height: 28vh;
   width: 100%;
@@ -41,7 +44,8 @@ body nav ul {
   margin-bottom: 0 !important;
   padding-left: unset !important;
 }
-body nav ul a {
+body nav ul a,
+body nav ul button {
   text-decoration: none;
   font-size: 2rem;
   padding: 0.5rem;
@@ -49,12 +53,37 @@ body nav ul a {
   margin: 1rem;
   background-color: gray;
 }
-body nav ul a:hover {
+body nav ul a:hover,
+body nav ul button:hover {
   background-color: black;
   cursor: pointer;
 }
+body nav ul button {
+  border: unset;
+}
 body section.kobe {
   min-height: 70vh;
+  flex-grow: 1;
+}
+body section.kobe div.signup2 {
+  animation: bounceInUp;
+  animation-duration: 2s;
+}
+body section.kobe3 {
+  min-height: 90vh;
+  flex-grow: 1;
+}
+body section.kobe3 div.signup2 {
+  animation: bounceInUp;
+  animation-duration: 2s;
+}
+body section.kobe2 {
+  min-height: 90vh;
+  flex-grow: 2;
+}
+body section.kobe2 div.signup2 {
+  animation: bounceInUp;
+  animation-duration: 2s;
 }
 body section {
   min-height: 180vh;

@@ -9,6 +9,9 @@ body {
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+  main.memee {
+    display: flex;
+  }
 
   header {
     min-height: 28vh;
@@ -38,7 +41,8 @@ body {
       height: 100%;
       margin-bottom: 0 !important;
       padding-left: unset !important;
-      a {
+      a,
+      button {
         text-decoration: none;
         font-size: 2rem;
         padding: 0.5rem;
@@ -50,10 +54,35 @@ body {
           cursor: pointer;
         }
       }
+      button {
+        border: unset;
+      }
     }
   }
   section.kobe {
     min-height: 70vh;
+    flex-grow: 1;
+    div.signup2 {
+      animation: bounceInUp;
+      animation-duration: 2s;
+    }
+  }
+  section.kobe3 {
+    min-height: 90vh;
+    flex-grow: 1;
+    // justify-content: flex-start;
+    div.signup2 {
+      animation: bounceInUp;
+      animation-duration: 2s;
+    }
+  }
+  section.kobe2 {
+    min-height: 90vh;
+    flex-grow: 2;
+    div.signup2 {
+      animation: bounceInUp;
+      animation-duration: 2s;
+    }
   }
   section {
     min-height: 180vh;

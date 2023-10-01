@@ -1,35 +1,37 @@
-const mySQL = require("mysql");
 const express = require("express");
+const jwt = require("jsonwebtoken");
+const connection = require("./mysqlDB");
+const authroute = require("./middlewear").auth;
+const loginauth = require("./middlewear").loginauth;
+const notmember = require("./middlewear").notmember;
 var cors = require("cors");
 const { JSON } = require("mysql/lib/protocol/constants/types");
 const { json } = require("body-parser");
 require("dotenv").config(); // 导入dotenv模块，加载环境变量
 const app = express();
+const passport = require("passport");
+require("./middlewear/passport")(passport);
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
 app.use(express.json());
 app.use(cors());
-// var connection = mySQL.createConnection({
-//   user: "root",
-//   password: "root",
-//   host: "localhost",
-//   port: 8889,
-//   database: "musicc",
-// });
-var connection = mySQL.createConnection({
-  user: process.env.DB_USER,
-  password: process.env.DB_PASSWORD,
-  host: process.env.DB_HOST,
-  port: process.env.DB_PORT,
-  database: process.env.DB_DATABASE,
-});
-connection.connect(function (err) {
-  if (err) {
-    console.error("Error connecting to MySQL:", err);
-  } else {
-    console.log("Connected to MySQL database");
-  }
+app.use("/api/account", authroute);
+app.use(
+  "/api/member",
+  passport.authenticate("jwt", { session: false }),
+  loginauth
+);
+app.use("/api/notmember", notmember);
+app.get("/products", (req, res) => {
+  const query = `select * from beatforsell`;
+  connection.query(query, (error, result) => {
+    if (error) {
+      res.sendStatus(500);
+    } else {
+      res.json(result);
+    }
+  });
 });
 
 app.get("/show-beat-data/:id", (req, res) => {
@@ -347,6 +349,119 @@ app.post("/submit-course", (req, res) => {
     }
   });
 });
+// app.post("/signup", (req, res) => {
+//   const { name, mail, phone, account, password } = req.body;
+
+//   // 在這裡進行密碼哈希處理
+//   // const hashedPassword = mySQL.raw("SHA2(?, 256)", [password]);
+
+//   const query =
+//     "INSERT INTO account  (name, email, phone, account, password) VALUES (?, ?, ?, ?,?)";
+//   connection.query(
+//     query,
+//     [name, mail, phone, account, password],
+//     (error, results) => {
+//       if (error) {
+//         console.error("Error inserting data into MySQL database:", error);
+//         res.status(500).json({ error: "An error occurred" });
+//       } else {
+//         // 生成JWT
+//         const token = jwt.sign({ account }, "kobelebron1415", {
+//           expiresIn: "1h",
+//         });
+//         res.status(200).json({ token });
+//         console.log("register success");
+//       }
+//     }
+//   );
+// });
+// app.post("/signup", (req, res) => {
+//   const { name, mail, phone, account, password } = req.body;
+
+//   // 使用 bcrypt 庫進行密碼哈希處理
+//   bcrypt.hash(password, 10, (err, hashedPassword) => {
+//     if (err) {
+//       console.error("Error hashing password:", err);
+//       res.status(500).json({ error: "An error occurred" });
+//       return;
+//     }
+
+//     const query =
+//       "INSERT INTO account  (name, email, phone, account, password) VALUES (?, ?, ?, ?, ?)";
+//     connection.query(
+//       query,
+//       [name, mail, phone, account, hashedPassword], // 使用哈希後的密碼
+//       (error, results) => {
+//         if (error) {
+//           console.error("Error inserting data into MySQL database:", error);
+//           res.status(500).json({ error: "An error occurred" });
+//         } else {
+//           // 生成JWT
+//           const token = jwt.sign({ account }, "kobelebron1415", {
+//             expiresIn: "1h",
+//           });
+//           res.status(200).json({ token });
+//           console.log("register success");
+//         }
+//       }
+//     );
+//   });
+// });
+// app.post("/signup", (req, res) => {
+//   const { name, mail, phone, account, password } = req.body;
+
+//   // 檢查字段是否被修改
+//   if (req.body.hasOwnProperty("password")) {
+//     // 如果 password 字段存在，表示字段被修改，進行 bcrypt 哈希處理
+//     bcrypt.hash(password, 10, (err, hashedPassword) => {
+//       if (err) {
+//         console.error("Error hashing password:", err);
+//         res.status(500).json({ error: "An error occurred" });
+//       } else {
+//         // 執行相應的操作，例如將哈希過的密碼存入數據庫
+//         const query =
+//           "INSERT INTO account (name, email, phone, account, password) VALUES (?, ?, ?, ?, ?)";
+//         connection.query(
+//           query,
+//           [name, mail, phone, account, hashedPassword],
+//           (error, results) => {
+//             if (error) {
+//               console.error("Error inserting data into MySQL database:", error);
+//               res.status(500).json({ error: "An error occurred" });
+//             } else {
+//               // 注冊成功的處理邏輯
+//               res.status(200).json({ message: "Registration successful" });
+//             }
+//           }
+//         );
+//       }
+//     });
+//   } else {
+//     // 沒有修改 password 字段，表示為其他更新操作或是新建文檔
+//     // 檢查字段是否為新建文檔
+//     if (!req.body.hasOwnProperty("id")) {
+//       // 如果 id 字段不存在，表示為新建文檔，進行相應的操作
+//       const query =
+//         "INSERT INTO account (name, email, phone, account) VALUES (?, ?, ?, ?)";
+//       connection.query(
+//         query,
+//         [name, mail, phone, account],
+//         (error, results) => {
+//           if (error) {
+//             console.error("Error inserting data into MySQL database:", error);
+//             res.status(500).json({ error: "An error occurred" });
+//           } else {
+//             // 新建文檔成功的處理邏輯
+//             res.status(200).json({ message: "Document created successfully" });
+//           }
+//         }
+//       );
+//     } else {
+//       // 其他更新操作的處理邏輯
+//       // 例如更新其他欄位的值
+//     }
+//   }
+// });
 
 app.listen(3502, () => {
   console.log("port 3502 receiving request.");
