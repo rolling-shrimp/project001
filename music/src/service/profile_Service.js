@@ -26,7 +26,7 @@ class profileService {
     } else {
       token = "";
     }
-    return axios.get(API_URL + "/music/" + id, {
+    return axios.get(API_URL + "/musicCourr/" + id, {
       headers: {
         Authorization: token,
       },

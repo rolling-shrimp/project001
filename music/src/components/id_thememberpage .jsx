@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import Header from "./HpCom/header";
@@ -15,24 +15,54 @@ function MusicHome(props) {
   console.log(currentuser);
 
   const [thedatas, setDatas] = useState([]);
+  const [courseData, setcourseData] = useState([]);
+
+  const BeatFunc = useCallback((idparam) => {
+    const getBeat = async () => {
+      try {
+        let theRes = await Profile_Service.get(idparam);
+        setDatas(theRes.data);
+      } catch (e) {
+        console.log(e);
+      }
+    };
+    getBeat(idparam);
+  }, []);
+  const CourseFunc = useCallback((idparam) => {
+    const getCourse = async () => {
+      try {
+        let theRes = await Profile_Service.getcourse(idparam);
+        console.log(theRes.data);
+        setcourseData(theRes.data);
+      } catch (e) {
+        console.log(e);
+      }
+    };
+    getCourse(idparam);
+  }, []);
+
   useEffect(() => {
     let theid;
 
     if (currentuser) {
       theid = currentuser.user.id;
       console.log(theid);
-      Profile_Service.get(theid)
-        .then((data) => {
-          console.log(data);
-          setDatas(data.data);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+      BeatFunc(theid);
     } else {
       theid = "";
     }
-  }, []);
+  }, [BeatFunc]);
+  useEffect(() => {
+    let theid;
+
+    if (currentuser) {
+      theid = currentuser.user.id;
+      console.log(theid);
+      CourseFunc(theid);
+    } else {
+      theid = "";
+    }
+  }, [CourseFunc]);
 
   return (
     <>
@@ -91,13 +121,36 @@ function MusicHome(props) {
                 </Container>
               </div>
               <div
+                className="d-flex flex-column align-items-center"
                 style={{
                   color: "white",
                   padding: " 1rem",
                   border: "2px solid white",
+                  minHeight: " 50px",
+                  width: "50%",
                 }}
               >
                 <h2>你買的課程</h2>
+                <Container
+                  fluid
+                  style={{
+                    color: "white",
+                    padding: " 1rem",
+                    border: "2px solid white",
+                    minHeight: " 50px",
+                    width: "50%",
+                  }}
+                >
+                  {courseData.map((item) => {
+                    return (
+                      <Col>
+                        <Row>
+                          {item.course_name} ${item.price}
+                        </Row>
+                      </Col>
+                    );
+                  })}
+                </Container>
               </div>
             </section>
           </main>

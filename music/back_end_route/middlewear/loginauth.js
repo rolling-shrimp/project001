@@ -26,6 +26,22 @@ WHERE account.id = ?`;
     }
   });
 });
+router.get("/musicCourr/:id", (req, res) => {
+  const id = req.params.id;
+  const query = `SELECT account.id, the_courses_forsell.course_name, the_courses_forsell.price
+FROM account
+INNER JOIN member_buy_course ON member_buy_course.user_id = account.id
+INNER JOIN the_courses_forsell ON member_buy_course.name LIKE CONCAT('%', the_courses_forsell.course_name, '%')
+WHERE account.id = ?`;
+  connection.query(query, [id], (err, result) => {
+    if (err) {
+      console.log(err);
+      res.sendStatus(500);
+    } else {
+      res.json(result);
+    }
+  });
+});
 router.post("/memberbuying", (req, res) => {
   const { id, selectedBeats } = req.body;
 
@@ -61,7 +77,7 @@ router.post("/memberbuycourse", (req, res) => {
 
   if (selectedCourse.length > 0) {
     const selectedBeatsQuery =
-      "INSERT INTO memeber_buy_beat (user_id, beat_option) VALUES ?";
+      "INSERT INTO member_buy_course (user_id, name) VALUES ?";
     const selectedBeatsValues = selectedCourse.map((course) => [
       id,
       course.checkboxName,
