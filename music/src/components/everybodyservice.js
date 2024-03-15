@@ -5,4 +5,6 @@ class everybodyservice {
     return axios.get(api_url);
   }
 }
-export default new everybodyservice();
+let everyBodyService = new everybodyservice();
+
+export default everyBodyService;

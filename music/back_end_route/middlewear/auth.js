@@ -9,7 +9,7 @@ const login = require("./validation").login;
 const jtoken = require("jsonwebtoken");
 
 router.use((req, res, next) => {
-  console.log("receiving request");
+  console.log("router.use() receiving request");
   next();
 });
 router.get("/testapi", (req, res) => {
@@ -147,47 +147,85 @@ router.post("/login", (req, res) => {
   //先找出有沒有該帳號，若是沒有，回報沒有該帳號
   const query = "SELECT * FROM account WHERE account = ?";
   connection.query(query, [account], (err, results) => {
-    if (err) {
-      console.error("Error retrieving user information:", err);
-      res.status(500).json({ error: "An error occurred" });
-    } else if (results.length === 0) {
-      //帳戶沒註冊
-      res.status(404).json({ error: "User not found" });
-    } else {
-      //進行帳密驗證
-      const userAccount = results[0];
-      // const testPassword = passwordUtils.hashPassword(password);
-      const passwordMatched = passwordUtils.comparePassword(
-        password,
-        userAccount.password
-      );
-      if (passwordMatched) {
-        // 密码匹配，登录成功
-        // res.status(200).json({ message: "Login successful" });
-        const jtokenObject = {
+    if (err) res.status(500).json({ error: "An error occurred" });
+
+    if (results.length === 0) res.status(404).json({ error: "User not found" });
+
+    const userAccount = results[0];
+    // const testPassword = passwordUtils.hashPassword(password);
+    const passwordMatched = passwordUtils.comparePassword(
+      password,
+      userAccount.password
+    );
+
+    if (passwordMatched) {
+      // 密码匹配，登录成功
+      // res.status(200).json({ message: "Login successful" });
+      const jtokenObject = {
+        id: userAccount.id,
+        name: userAccount.name,
+        email: userAccount.email,
+        phone: userAccount.phone,
+        account: userAccount.account,
+      };
+      const thetoken = jtoken.sign(jtokenObject, process.env.SECRET);
+      res.send({
+        message: `${userAccount.name} 你好，歡迎來到入魂音樂，帶你一起飛 `,
+        token: "jwt " + thetoken,
+        user: {
           id: userAccount.id,
           name: userAccount.name,
           email: userAccount.email,
           phone: userAccount.phone,
           account: userAccount.account,
-        };
-        const thetoken = jtoken.sign(jtokenObject, process.env.SECRET);
-        res.send({
-          message: `${userAccount.name} 你好，歡迎來到入魂音樂，帶你一起飛 `,
-          token: "jwt " + thetoken,
-          user: {
-            id: userAccount.id,
-            name: userAccount.name,
-            email: userAccount.email,
-            phone: userAccount.phone,
-            account: userAccount.account,
-          },
-        });
-      } else {
-        // 密码不匹配，登录失败
-        res.status(401).json({ error: "Invalid credentials" });
-      }
+        },
+      });
+    } else {
+      // 密码不匹配，登录失败
+      res.status(401).json({ error: "Invalid credentials" });
     }
+
+    // if (err) {
+    //   console.error("Error retrieving user information:", err);
+    //   res.status(500).json({ error: "An error occurred" });
+    // } else if (results.length === 0) {
+    //   //帳戶沒註冊
+    //   res.status(404).json({ error: "User not found" });
+    // } else {
+    //   //進行帳密驗證
+    //   const userAccount = results[0];
+    //   // const testPassword = passwordUtils.hashPassword(password);
+    //   const passwordMatched = passwordUtils.comparePassword(
+    //     password,
+    //     userAccount.password
+    //   );
+    //   if (passwordMatched) {
+    //     // 密码匹配，登录成功
+    //     // res.status(200).json({ message: "Login successful" });
+    //     const jtokenObject = {
+    //       id: userAccount.id,
+    //       name: userAccount.name,
+    //       email: userAccount.email,
+    //       phone: userAccount.phone,
+    //       account: userAccount.account,
+    //     };
+    //     const thetoken = jtoken.sign(jtokenObject, process.env.SECRET);
+    //     res.send({
+    //       message: `${userAccount.name} 你好，歡迎來到入魂音樂，帶你一起飛 `,
+    //       token: "jwt " + thetoken,
+    //       user: {
+    //         id: userAccount.id,
+    //         name: userAccount.name,
+    //         email: userAccount.email,
+    //         phone: userAccount.phone,
+    //         account: userAccount.account,
+    //       },
+    //     });
+    //   } else {
+    //     // 密码不匹配，登录失败
+    //     res.status(401).json({ error: "Invalid credentials" });
+    //   }
+    // }
   });
 });
 

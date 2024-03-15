@@ -3,4 +3,5 @@ class Authservice {
     return JSON.parse(localStorage.getItem("user"));
   }
 }
-module.exports = new Authservice();
+let authService = new Authservice();
+export default authService;

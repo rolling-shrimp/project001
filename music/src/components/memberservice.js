@@ -18,4 +18,5 @@ class memberservice {
     });
   }
 }
-export default new memberservice();
+let memberService = new memberservice();
+export default memberService;

@@ -1,5 +1,5 @@
 import React from "react";
-
+import { musicType } from "./musicTypeList";
 import "../styles/style4.css";
 import "bootstrap/dist/css/bootstrap.css";
 import "animate.css";
@@ -70,38 +70,16 @@ function MusicHome() {
           <h1>曲風類別</h1>
 
           <div className="section2-1">
-            <figure>
-              <img src={require("../assets/boombap2.jpg")} alt="" />
-              <figcaption>
-                <a href={"/boom"} target="blank">
-                  BoomBap
-                </a>
-              </figcaption>
-            </figure>
-            <figure>
-              <img src={require("../assets/g-funk2.jpg")} alt="" />
-              <figcaption>
-                <a href={"/gfunk"} target="blank">
-                  G-Funk
-                </a>
-              </figcaption>
-            </figure>
-            <figure>
-              <img src={require("../assets/lofi2.jpg")} alt="" />
-              <figcaption>
-                <a href={"/lofi"} target="blank">
-                  Lo-Fi
-                </a>
-              </figcaption>
-            </figure>
-            <figure>
-              <img src={require("../assets/R&B.jpg")} alt="" />
-              <figcaption>
-                <a href={"/RNB"} target="blank">
-                  R&B
-                </a>
-              </figcaption>
-            </figure>
+            {musicType.map((item) => (
+              <figure>
+                <img src={item.imgSrc} alt="" />
+                <figcaption>
+                  <a href={item.type} target="blank">
+                    {item.type}
+                  </a>
+                </figcaption>
+              </figure>
+            ))}
           </div>
         </div>
       </main>
