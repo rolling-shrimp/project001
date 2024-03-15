@@ -139,6 +139,7 @@ function Boom() {
                   </span>
                   &nbsp;&nbsp;
                   <a
+                    rel="noreferrer"
                     target="_blank"
                     href="https://instagram.com/rollingshrimp?igshid=ZDdkNTZiNTM="
                   >
