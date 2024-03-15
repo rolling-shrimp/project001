@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import Foot from "../HpCom/footer";
 import "../styles/boombastyle.css";
 function Header() {
@@ -9,16 +9,16 @@ function Header() {
       </header>
       <nav>
         <ul>
-          <a target="_blank" href={"/"}>
+          <a target="_blank" rel="noreferrer" href={"/"}>
             首頁
           </a>
-          <a target="_blank" href={"./mp3"}>
+          <a target="_blank" rel="noreferrer" href={"./mp3"}>
             音樂音檔
           </a>
-          <a target="_blank" href={"./morder"}>
+          <a target="_blank" rel="noreferrer" href={"./morder"}>
             下單區
           </a>
-          <a target="_blank" href={"./mcourse"}>
+          <a target="_blank" rel="noreferrer" href={"./mcourse"}>
             課程報名
           </a>
         </ul>

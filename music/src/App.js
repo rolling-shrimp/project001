@@ -5,9 +5,6 @@ import Musicmp3 from "./components/Mump3";
 import MusicOr from "./components/MuOrder";
 import Musicoursee from "./components/MuCourse";
 import Boom from "./components/Beatpages/boombap";
-import Gfunkk from "./components/Beatpages/gfunk";
-import Lofii from "./components/Beatpages/lofi";
-import RBB from "./components/Beatpages/rb";
 import User from "./components/userData";
 import Course from "./components/enrollaData";
 import Test from "./components/oRcom/form copy";
@@ -15,12 +12,11 @@ import SIGNUP from "./components/signupHom";
 import Log from "./components/loginHom";
 // import Mem from "./components/thememberpage";
 import IDMem from "./components/id_thememberpage ";
-import Authservice from "./components/authservice";
-
+import authService from "./components/authservice";
 // import "bootstrap/dist/css/bootstrap.css";
 
 function App() {
-  let [currentuser, setcurrentuser] = useState(Authservice.getCurrentUser());
+  let [currentuser, setcurrentuser] = useState(authService.getCurrentUser());
 
   return (
     <div className="App">
@@ -45,10 +41,7 @@ function App() {
             />
           }
         />
-        <Route path="/boom" element={<Boom />} />
-        <Route path="/gfunk" element={<Gfunkk />} />
-        <Route path="/lofi" element={<Lofii />} />
-        <Route path="/RNB" element={<RBB />} />
+        <Route path="/:id" element={<Boom />} />
         <Route path="/test" element={<Test />} />
         <Route path="/signup" element={<SIGNUP />} />
         <Route path="/log" element={<Log />} />

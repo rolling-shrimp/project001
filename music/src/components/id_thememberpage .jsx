@@ -1,17 +1,14 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import { useParams } from "react-router-dom";
+
 import Header from "./HpCom/header";
-import axios from "axios";
-import Authservice from "./authservice";
 
 import Foot from "./HpCom/footer";
 import "./styles/styles.css";
-import Profile_Service from "../service/profile_Service";
+
+import profileServicing from "../service/profile_Service";
 function MusicHome(props) {
-  // console.log(theid);
-  let { currentuser, setcurrentuser } = props;
-  // let [currentuser, setcurrentuser] = useState(Authservice.getCurrentUser());
+  let { currentuser /*ignored*/ } = props;
   console.log(currentuser);
 
   const [thedatas, setDatas] = useState([]);
@@ -20,7 +17,7 @@ function MusicHome(props) {
   const BeatFunc = useCallback((idparam) => {
     const getBeat = async () => {
       try {
-        let theRes = await Profile_Service.get(idparam);
+        let theRes = await profileServicing.get(idparam);
         setDatas(theRes.data);
       } catch (e) {
         console.log(e);
@@ -31,7 +28,7 @@ function MusicHome(props) {
   const CourseFunc = useCallback((idparam) => {
     const getCourse = async () => {
       try {
-        let theRes = await Profile_Service.getcourse(idparam);
+        let theRes = await profileServicing.getcourse(idparam);
         console.log(theRes.data);
         setcourseData(theRes.data);
       } catch (e) {
@@ -51,7 +48,7 @@ function MusicHome(props) {
     } else {
       theid = "";
     }
-  }, [BeatFunc]);
+  }, [BeatFunc, currentuser]);
   useEffect(() => {
     let theid;
 
@@ -62,7 +59,7 @@ function MusicHome(props) {
     } else {
       theid = "";
     }
-  }, [CourseFunc]);
+  }, [CourseFunc, currentuser]);
 
   return (
     <>

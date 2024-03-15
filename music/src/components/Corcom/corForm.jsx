@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import Authservice from "../authservice";
-import enterUserData from "../../service/enterUserData";
+import authService from "../authservice";
+
 import "../styles/styles2.css";
 import "animate.css";
 function MusicHome() {
   const navigate = useNavigate();
-  let [currentuser, setcurrentuser] = useState(Authservice.getCurrentUser());
+  let [currentuser /*ignore*/] = useState(authService.getCurrentUser());
   const [username, setUsername] = useState("");
   const usernameChange = (event) => {
     setUsername(event.target.value);
@@ -74,7 +74,7 @@ function MusicHome() {
         }
       );
       console.log(userDataa.data);
-      let j = userDataa.data.id;
+
       navigate(`/api/member/music`);
 
       // Successful submission

@@ -1,8 +1,7 @@
-import axios from "axios";
 import React, { useState } from "react";
-import signupservice from "../service/signupservice";
-// import { useHistory } from "react-router-dom";
+
 import Form from "react-bootstrap/Form";
+import signuping from "../service/signupservice";
 
 const Suginup = () => {
   const [errmessage, seterrmessage] = useState("");
@@ -27,7 +26,7 @@ const Suginup = () => {
     setphone(e.target.value);
   };
   const doClick = function () {
-    signupservice
+    signuping
       .post(name, mail, phone, account, password)
       .then((data) => {
         alert("註冊成功");
@@ -35,16 +34,8 @@ const Suginup = () => {
       .catch((e) => {
         alert(e.response.data);
         seterrmessage(e.response.data);
-        // console.log(e.response.data);
       });
-    // try {
-    //   let url = "http://localhost:3502/api/account/signup";
-    //   var response = await axios.post(url, signupData);
-    //   console.log(response.data);
-    //   alert("註冊成功");
-    // } catch (e) {
-    //
-    // }
+
     window.location = "/api/member/music";
   };
 

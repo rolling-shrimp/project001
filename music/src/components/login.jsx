@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
 
 const Suginup = () => {
-  const [errmessage, seterrmessage] = useState("");
+  const [, /*ignored */ seterrmessage] = useState("");
   const [account, setaccount] = useState("");
   const changeaccount = (e) => {
     setaccount(e.target.value);

@@ -12,4 +12,5 @@ class signupp {
     return axios.post(url, signupData);
   }
 }
-export default new signupp();
+let signuping = new signupp();
+export default signuping;

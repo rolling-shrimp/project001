@@ -74,7 +74,7 @@ function MusicHome() {
               <figure>
                 <img src={item.imgSrc} alt="" />
                 <figcaption>
-                  <a href={item.type} target="blank">
+                  <a href={`/${item.type}`} target="blank">
                     {item.type}
                   </a>
                 </figcaption>

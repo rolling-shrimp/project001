@@ -33,4 +33,5 @@ class profileService {
     });
   }
 }
-export default new profileService();
+let profileServicing = new profileService();
+export default profileServicing;

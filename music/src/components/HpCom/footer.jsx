@@ -38,16 +38,21 @@ function Header() {
     <>
       <footer>
         <ul style={{ paddingLeft: "unset" }} ref={elementRef}>
-          <a target="_blank" href={yturl}>
+          <a target="_blank" rel="noreferrer" href={yturl}>
             入魂音樂yt
           </a>
           <a
+            rel="noreferrer"
             target="_blank"
             href="https://soundcloud.com/haruki-dj?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing"
           >
             soundcloud
           </a>
-          <a target="_blank" href="mailto:nyukonmusic@gmail.com">
+          <a
+            rel="noreferrer"
+            target="_blank"
+            href="mailto:nyukonmusic@gmail.com"
+          >
             信箱
           </a>
         </ul>

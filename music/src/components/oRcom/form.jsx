@@ -10,7 +10,7 @@ import "../styles/ordersty.css";
 import "bootstrap/dist/css/bootstrap.css";
 
 function MusicHome(props) {
-  const [a, seta] = useState("");
+  const [, /* ignored*/ seta] = useState("");
   let [productss, setproductss] = useState([]);
   useEffect(() => {
     everybodyservice
@@ -37,7 +37,7 @@ function MusicHome(props) {
     setUsermail(event.target.value);
   };
   // let { currentuser, setcurrentuser } = props;
-  let [currentuser, setcurrentuser] = useState(Authservice.getCurrentUser());
+  let [currentuser /* ignored*/] = useState(Authservice.getCurrentUser());
 
   //設定checkbox，雨至少要選擇其中一個選項才能提交的條件
 
@@ -138,7 +138,7 @@ function MusicHome(props) {
         }
       );
       console.log(userDataa.data);
-      let j = userDataa.data.id;
+
       navigate(`/api/member/music`);
 
       // Successful submission

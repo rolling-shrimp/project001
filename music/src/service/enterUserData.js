@@ -14,4 +14,5 @@ class enterUserData {
     return axios.get();
   }
 }
-export default new enterUserData();
+let enteringUserData = new enterUserData();
+export default enteringUserData;
