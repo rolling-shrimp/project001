@@ -63,8 +63,25 @@ body nav ul button {
 }
 body section.kobe {
   min-height: 70vh;
+  flex-grow: 1;
 }
 body section.kobe div.signup2 {
+  animation: bounceInUp;
+  animation-duration: 2s;
+}
+body section.kobe3 {
+  min-height: 90vh;
+  flex-grow: 1;
+}
+body section.kobe3 div.signup2 {
+  animation: bounceInUp;
+  animation-duration: 2s;
+}
+body section.kobe2 {
+  min-height: 90vh;
+  flex-grow: 2;
+}
+body section.kobe2 div.signup2 {
   animation: bounceInUp;
   animation-duration: 2s;
 }

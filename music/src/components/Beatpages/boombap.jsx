@@ -92,6 +92,7 @@ function Boom() {
                   </span>
                   &nbsp;&nbsp;
                   <a
+                    rel="noreferrer"
                     target="_blank"
                     href="https://instagram.com/rollingshrimp?igshid=ZDdkNTZiNTM="
                   >
@@ -99,13 +100,14 @@ function Boom() {
                   </a>
                   &nbsp;&nbsp;
                   <a
+                    rel="noreferrer"
                     target="_blank"
                     href="https://soundcloud.com/ox038xlqxjum?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing"
                   >
                     <img src={require("../assets/soundcloud.png")} alt="" />
                   </a>
                   &nbsp;&nbsp;
-                  <a target="_blank" href="/morder">
+                  <a rel="noreferrer" target="_blank" href="/morder">
                     <img src={require("../assets/shop.png")} alt="" />
                   </a>
                 </p>
@@ -144,6 +146,7 @@ function Boom() {
                   </a>
                   &nbsp;&nbsp;
                   <a
+                    rel="noreferrer"
                     target="_blank"
                     href="https://soundcloud.com/ox038xlqxjum?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing"
                   >
@@ -177,6 +180,7 @@ function Boom() {
                   </span>
                   &nbsp;&nbsp;
                   <a
+                    rel="noreferrer"
                     target="_blank"
                     href="https://instagram.com/rollingshrimp?igshid=ZDdkNTZiNTM="
                   >
@@ -184,13 +188,14 @@ function Boom() {
                   </a>
                   &nbsp;&nbsp;
                   <a
+                    rel="noreferrer"
                     target="_blank"
                     href="https://soundcloud.com/ox038xlqxjum?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing"
                   >
                     <img src={require("../assets/soundcloud.png")} alt="" />
                   </a>
                   &nbsp;&nbsp;
-                  <a target="_blank" href="/morder">
+                  <a rel="noreferrer" target="_blank" href="/morder">
                     <img src={require("../assets/shop.png")} alt="" />
                   </a>
                 </p>
@@ -219,6 +224,7 @@ function Boom() {
                   </span>
                   &nbsp;&nbsp;
                   <a
+                    rel="noreferrer"
                     target="_blank"
                     href="https://instagram.com/rollingshrimp?igshid=ZDdkNTZiNTM="
                   >
@@ -226,13 +232,14 @@ function Boom() {
                   </a>
                   &nbsp;&nbsp;
                   <a
+                    rel="noreferrer"
                     target="_blank"
                     href="https://soundcloud.com/ox038xlqxjum?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing"
                   >
                     <img src={require("../assets/soundcloud.png")} alt="" />
                   </a>
                   &nbsp;&nbsp;
-                  <a target="_blank" href="/morder">
+                  <a rel="noreferrer" target="_blank" href="/morder">
                     <img src={require("../assets/shop.png")} alt="" />
                   </a>
                 </p>

@@ -187,7 +187,7 @@ div.carouselExampleControls div.carousel-inner img.thepic {
 section#opp {
   display: flex;
   min-height: 73vh;
-  justify-content: start;
+  justify-content: flex-start;
 }
 section#opp h1 {
   color: white;

@@ -170,7 +170,7 @@ main.courmain {
 
 section.seccc11 {
   flex-direction: column;
-  justify-content: start;
+  justify-content: flex-start;
   min-height: 30vh !important;
 }
 section.seccc11 form.courform {

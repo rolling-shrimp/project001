@@ -75,7 +75,7 @@ body main#boomain section.lefft div#rotate figure figcaption {
 body main#boomain section.right {
   display: flex;
   flex-direction: column;
-  justify-content: start;
+  justify-content: flex-start;
   align-items: center;
   padding: 1.5rem;
   background-color: rgba(36, 35, 35, 0.4);
@@ -84,7 +84,7 @@ body main#boomain section.right {
 body main#boomain section.right div.track {
   display: flex;
   height: 183px;
-  justify-content: start;
+  justify-content: flex-start;
   border: 2px solid white;
   width: 80%;
   background-color: rgba(128, 128, 128, 0.5);

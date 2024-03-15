@@ -77,7 +77,7 @@ body {
       // border: gray 4px solid;
       display: flex;
       flex-direction: column;
-      justify-content: start;
+      justify-content: flex-start;
       align-items: center;
       padding: 1.5rem;
       background-color: rgba(36, 35, 35, 0.4);
@@ -86,7 +86,7 @@ body {
       div.track {
         display: flex;
         height: 183px;
-        justify-content: start;
+        justify-content: flex-start;
         border: 2px solid white;
         width: 80%;
         background-color: rgb(128, 128, 128, 0.5);
