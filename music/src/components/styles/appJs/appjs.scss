@@ -1,0 +1,59 @@
+.stickyPosition {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+.relativePsotion {
+  position: relative;
+}
+.theNav {
+  height: 10vh;
+}
+
+.nav-link {
+  color: white;
+}
+footer {
+  background-color: black !important;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 40vh;
+  ul {
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+    height: 100%;
+    a {
+      text-decoration: none;
+      text-align: center;
+      font-size: 1rem;
+      padding: 0.5rem;
+      color: black;
+      width: 30vw;
+      border-style: groove;
+      background-color: white;
+    }
+  }
+  div.icon {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+
+    a {
+      position: relative;
+      top: 0.5rem;
+      right: 20vh;
+
+      i {
+        font-size: 1.5rem;
+        color: white;
+      }
+    }
+  }
+}

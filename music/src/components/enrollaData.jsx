@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
-import Header from "./HpCom/header";
-import Foot from "./HpCom/footer";
 import "./styles/styles.css";
 
 function MusicHome(props) {
@@ -29,7 +27,6 @@ function MusicHome(props) {
 
   return (
     <>
-      <Header />
       <section className="kobe">
         <h1
           style={{ color: "white", marginBottom: "unset", marginTop: "4rem" }}
@@ -63,7 +60,6 @@ function MusicHome(props) {
         </button> */}
         <input type="button" value="回上頁" onClick={doOkClick} />{" "}
       </section>
-      <Foot />
     </>
   );
 }

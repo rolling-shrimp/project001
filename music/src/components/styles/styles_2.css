@@ -52,50 +52,6 @@ body section div.teacher p {
 body section iframe {
   margin-bottom: 3rem;
 }
-body footer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background-color: gray;
-  min-height: 40vh;
-  /*audio{
-          visibility: hidden;
-      }*/
-}
-body footer ul {
-  list-style-type: none;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-top: 2rem;
-  height: 100%;
-}
-body footer ul a {
-  text-decoration: none;
-  text-align: center;
-  font-size: 1rem;
-  padding: 0.5rem;
-  color: black;
-  width: 30vw;
-  border-style: groove;
-  background-color: white;
-}
-body footer div.icon {
-  display: flex;
-  justify-content: flex-end;
-  width: 100%;
-}
-body footer div.icon a {
-  position: relative;
-  top: 0.5rem;
-  right: 20vh;
-}
-body footer div.icon a i {
-  font-size: 1.5rem;
-  color: white;
-}
 
 /*@import url('https://fonts.googleapis.com/css2?family=Comic+Neue&display=swap');
 *{

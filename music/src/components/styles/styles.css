@@ -1,65 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500&display=swap");
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-}
-
 body {
   background-image: url(../assets/8.jpg);
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-}
-body main.memee {
-  display: flex;
-}
-body header {
-  min-height: 28vh;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: gray;
-}
-body header h1 {
-  color: white;
-  font-size: 3.5rem;
-}
-body nav {
-  background-color: white;
-  width: 100%;
-  position: sticky;
-  top: 0;
-  z-index: 2;
-  min-height: 10vh;
-}
-body nav ul {
-  animation: backInRight 0.5s;
-  list-style-type: none;
-  display: flex;
-  justify-content: flex-start;
-  height: 100%;
-  margin-bottom: 0 !important;
-  padding-left: unset !important;
-}
-body nav ul a,
-body nav ul button {
-  text-decoration: none;
-  font-size: 2rem;
-  padding: 0.5rem;
-  color: white;
-  margin: 1rem;
-  background-color: gray;
-}
-body nav ul a:hover,
-body nav ul button:hover {
-  background-color: black;
-  cursor: pointer;
-}
-body nav ul button {
-  border: unset;
 }
 body section.kobe {
   min-height: 70vh;
@@ -103,11 +48,7 @@ body section div.filter {
   z-index: -1;
   animation: lights 10s linear infinite;
 }
-body section iframe {
-  border: gray 4px solid !important;
-}
 body section div.introduce {
-  width: 50vw;
   animation: swing;
   animation-duration: 2s;
   /*background-color: gray;*/
@@ -120,18 +61,14 @@ body section div.introduce:hover {
   animation: bounce 0.8s;
 }
 body section div.introduce h2 {
-  font-size: 1.5rem;
   color: white;
-  margin-top: 1.5rem;
 }
 body section div.introduce p {
   color: white;
   text-align: center;
-  font-size: 1.3rem;
   margin-bottom: 2rem;
 }
 body section div.teacher {
-  width: 50vw;
   animation: swing;
   animation-duration: 2s;
   /*background-color: gray;*/
@@ -144,18 +81,12 @@ body section div.teacher:hover {
   animation: bounce 0.8s;
 }
 body section div.teacher h2 {
-  font-size: 1.5rem;
   color: white;
-  margin-top: 1rem;
 }
 body section div.teacher p {
   color: white;
   text-align: center;
   margin-bottom: 2rem;
-  font-size: 1.3rem;
-}
-body section iframe {
-  margin-bottom: 3rem;
 }
 body section#userdatsec {
   min-height: 180vh;
@@ -302,14 +233,6 @@ input[type=button] {
   margin-bottom: 1rem;
 }
 
-/*@import url('https://fonts.googleapis.com/css2?family=Comic+Neue&display=swap');
-*{
-    font-family: 'Bakbak One', cursive;
-font-family: 'Comic Neue', cursive;
-font-family: 'Moon Dance', cursive;
-font-family: 'Noto Sans TC', sans-serif;
-font-family: 'Noto Serif SC', serif;
-}*/
 * {
   font-family: "Noto Sans JP", sans-serif;
 }

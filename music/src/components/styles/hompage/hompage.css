@@ -1,0 +1,60 @@
+.title {
+  height: 50vh;
+  font-size: 15rem !important;
+}
+
+iframe {
+  border: gray 4px solid !important;
+}
+
+.note {
+  color: white;
+  font-size: 2rem;
+}
+
+.hoverAnimate {
+  margin-right: 2rem;
+  border-right: rgba(128, 128, 128, 0.849) 1px solid;
+}
+
+.theSpace {
+  height: 3vh;
+  background-color: rgba(0, 0, 0, 0.466);
+}
+
+.figureElement {
+  animation: swing;
+  animation-duration: 2s;
+}
+.figureElement:hover {
+  animation: bounce 0.8s;
+}
+
+.homepagePtag {
+  font-size: 10px !important;
+}
+
+.backgroundColor {
+  background-color: rgba(0, 0, 0, 0.466);
+  height: 30vh;
+  padding: 1rem;
+}
+
+.MusicGenre {
+  height: 100vh;
+}
+
+.linkColor {
+  color: black !important;
+  text-align: center;
+}
+
+@media screen and (max-width: 594px) {
+  .animationItem {
+    animation: swing;
+    animation-duration: 2s;
+  }
+  .animationItem:hover {
+    animation: bounce 0.8s;
+  }
+}/*# sourceMappingURL=hompage.css.map */

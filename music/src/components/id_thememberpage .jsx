@@ -1,8 +1,6 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 
-import Header from "./HpCom/header";
-
 import Foot from "./HpCom/footer";
 import "./styles/styles.css";
 
@@ -70,7 +68,6 @@ function MusicHome(props) {
       )}
       {currentuser && (
         <>
-          <Header />
           <main className="memee">
             <section className="kobe3">
               <div
