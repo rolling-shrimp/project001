@@ -2,9 +2,6 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 
-import Foot from "./HpCom/footer";
-import "./styles/styles.css";
-
 function MusicHome(props) {
   var doOkClick = async () => {
     window.location = "/morder";
@@ -67,7 +64,6 @@ function MusicHome(props) {
           onClick={doOkClick}
         />{" "}
       </section>
-      <Foot />
     </>
   );
 }

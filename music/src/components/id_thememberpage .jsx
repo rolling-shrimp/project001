@@ -1,9 +1,6 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 
-import Foot from "./HpCom/footer";
-import "./styles/styles.css";
-
 import profileServicing from "../service/profile_Service";
 function MusicHome(props) {
   let { currentuser /*ignored*/ } = props;
@@ -148,8 +145,6 @@ function MusicHome(props) {
               </div>
             </section>
           </main>
-
-          <Foot />
         </>
       )}
     </>

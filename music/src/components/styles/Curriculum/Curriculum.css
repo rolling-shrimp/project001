@@ -1,0 +1,7 @@
+.curriculums {
+  width: 70%;
+  height: 70%;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  gap: 1rem;
+}/*# sourceMappingURL=Curriculum.css.map */

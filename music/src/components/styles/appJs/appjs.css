@@ -1,7 +1,51 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500&display=swap");
+body {
+  background-image: url(../../assets/4.jpg);
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+footer {
+  background-color: rgb(189, 188, 188) !important;
+}
+footer ul {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80%;
+}
+footer ul a {
+  font-size: 1rem;
+  display: block;
+  width: 100%;
+  border: black 2px solid;
+  margin-bottom: 0.2rem;
+  width: 70% !important;
+}
+
+* {
+  font-family: "Noto Sans JP", sans-serif;
+}
+
 .stickyPosition {
   position: sticky;
   top: 0;
+  min-height: 15vh;
   z-index: 2;
+}
+
+.notHomtePageSticky {
+  position: sticky;
+  top: 0;
+  min-height: 15vh;
+  background-color: white;
+}
+
+.notHomeNav {
+  height: 15vh;
+  color: black;
 }
 
 .relativePsotion {
@@ -9,11 +53,16 @@
 }
 
 .theNav {
-  height: 10vh;
+  min-height: 15vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  color: white;
 }
 
-.nav-link {
-  color: white;
+.theDropDown {
+  display: none;
 }
 
 footer {
@@ -56,4 +105,39 @@ footer div.icon a {
 footer div.icon a i {
   font-size: 1.5rem;
   color: white;
+}
+
+.FormArea {
+  height: 100%;
+}
+
+@media screen and (max-width: 576px) {
+  .theDropDown {
+    display: block;
+  }
+  .theNavSmall {
+    display: none !important;
+  }
+  .smallWidthColumn {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+  }
+  .theNavInDrop {
+    display: block;
+  }
+  .stickyPosition {
+    background-color: white;
+  }
+  .theNav {
+    color: black !important;
+  }
+  .nav-link {
+    color: black;
+  }
+  .nav-link:hover {
+    text-decoration: underline;
+    color: black;
+  }
 }/*# sourceMappingURL=appjs.css.map */
