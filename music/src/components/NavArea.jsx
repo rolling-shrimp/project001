@@ -17,7 +17,7 @@ const NavArea = ({ currentuser }) => {
 
   const changeNavStyle = useCallback(() => {
     console.log("activate useCallbak");
-    const updatedNavArea = { backgroundColor: "", color: "", borderBottom: "" };
+    let updatedNavArea = { backgroundColor: "", color: "", borderBottom: "" };
     if (location.pathname !== "/") {
       updatedNavArea.backgroundColor = "white";
       updatedNavArea.color = "black";
@@ -28,7 +28,7 @@ const NavArea = ({ currentuser }) => {
         updatedNavArea.color = "black";
         updatedNavArea.borderBottom = "black 1px solid";
       } else {
-        updatedNavArea.color = "white";
+        updatedNavArea = { ...updatedNavArea, color: "white" };
       }
     }
     return updatedNavArea; // 不再更新狀態，僅返回更新後的值
