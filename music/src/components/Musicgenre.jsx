@@ -1,5 +1,5 @@
 import React from "react";
-import { Col, Figure, Nav, Row } from "react-bootstrap";
+import { Figure, Nav } from "react-bootstrap";
 import Main from "./Main";
 import { musicType } from "./musicTypeList";
 const Musicgenre = () => {

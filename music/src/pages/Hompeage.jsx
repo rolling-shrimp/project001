@@ -53,7 +53,7 @@ const Hompeage = () => {
             rightCol: 1,
           });
     }
-  }, [width]);
+  }, [width, itemMd]);
   return (
     <Container fluid>
       <Row>

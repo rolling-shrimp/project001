@@ -41,7 +41,7 @@ const NavArea = ({ currentuser }) => {
           })
         : setnavArea({ color: "white" });
     }
-  }, [scrollPosition, location]);
+  }, [scrollPosition, location, navArea]);
   return (
     <Container className="stickyPosition" style={navArea} fluid>
       <Row>

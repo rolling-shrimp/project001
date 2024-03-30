@@ -8,12 +8,10 @@ import MuCourse from "./pages/MuCourse";
 import User from "./components/userData";
 import SingnUp from "./pages/SingnUp";
 import Log from "./components/loginHom";
-import IDMem from "./components/id_thememberpage ";
 import MusicPlauerList from "./pages/MusicPlauerList";
 
 import "./components/styles/appJs/appjs.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Musicgenre from "./components/Musicgenre";
 
 function App() {
   let [currentuser, setcurrentuser] = useState(authService.getCurrentUser());
@@ -35,12 +33,12 @@ function App() {
         <Route path="/log" element={<Log />} />
         <Route path="/player/:id" element={<MusicPlauerList />} />
         <Route path="/show-beat-data/:id" element={<User />} />
-        <Route
+        {/* <Route
           path="/api/member/music"
           element={
             <IDMem currentuser={currentuser} setcurrentuser={setcurrentuser} />
           }
-        />
+        /> */}
       </Routes>
       <Footer />
     </div>

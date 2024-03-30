@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import { useLocation } from "react-router-dom";
 import FormArea from "../components/FormArea";
 import FormToFill from "../components/FormToFill";
