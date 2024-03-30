@@ -60,22 +60,19 @@ const MusicPlauerList = () => {
           <Main>
             {track.musics.map((item) => (
               <div class="music">
-                <h2>
-                  002 Cloudy Street &nbsp;{" "}
-                  <span style={{ color: "cadetblue" }}>98bpm</span>{" "}
-                </h2>
-                <audio src={item} controls></audio>
-                <div class="author">
+                <h2>{item.name} &nbsp; </h2>
+                <audio src={item.src} controls></audio>
+                {/* <div class="author">
                   <p>
                     <span>By &nbsp;</span>
                     <span
                       style={{ textDecoration: "underline" }}
                       class="theNmae"
                     >
-                      RollingShrimp{" "}
+                    
                     </span>
                   </p>
-                </div>
+                </div> */}
               </div>
             ))}
           </Main>
