@@ -14,9 +14,13 @@ const MusicPlauerList = () => {
   return (
     <Container style={{ backgroundColor: "rgb(228, 226, 226)" }} fluid>
       <Row>
-        <Col style={{ backgroundColor: "gray" }} md={4}>
-          <section className="lefft" id="lefft">
-            <div class="elbum d-flex flex-column align-items-center">
+        <Col
+          className=" d-flex flex-column align-items-center justify-content-center"
+          style={{ backgroundColor: "gray" }}
+          md={4}
+        >
+          <section className="leftSide w-100 p-5  d-flex flex-column align-items-center justify-content-start">
+            <div class="h-50 d-flex flex-column justify-content-center align-items-center">
               <Figure className="figureElement">
                 <Figure.Image
                   width={150}
@@ -28,7 +32,7 @@ const MusicPlauerList = () => {
             </div>
             <div
               id="rotate"
-              className="d-flex flex-row align-items-center justify-content-around "
+              className="w-100 d-flex flex-row align-items-center justify-content-around "
             >
               {musicTracks.map((item) => (
                 <a style={{ color: "white" }} href={`/player/${item.type}`}>
@@ -39,7 +43,10 @@ const MusicPlauerList = () => {
             </div>
           </section>
         </Col>
-        <Col md={8}>
+        <Col
+          className=" d-flex flex-column align-items-center justify-content-center"
+          md={8}
+        >
           {" "}
           <Main>
             {track.musics.map((item) => (
