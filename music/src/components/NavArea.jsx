@@ -16,24 +16,23 @@ const NavArea = ({ currentuser }) => {
   }, []);
 
   const changeNavStyle = useCallback(() => {
+    console.log("activate useCallbak");
+    const updatedNavArea = { backgroundColor: "", color: "", borderBottom: "" };
     if (location.pathname !== "/") {
-      setnavArea({
-        ...navArea,
-        backgroundColor: "white",
-        color: "black",
-        borderBottom: "black 1px solid",
-      });
+      updatedNavArea.backgroundColor = "white";
+      updatedNavArea.color = "black";
+      updatedNavArea.borderBottom = "black 1px solid";
     } else {
-      scrollPosition > 0
-        ? setnavArea({
-            ...navArea,
-            backgroundColor: "white",
-            color: "black",
-            borderBottom: "black 1px solid",
-          })
-        : setnavArea({ color: "white" });
+      if (scrollPosition > 0) {
+        updatedNavArea.backgroundColor = "white";
+        updatedNavArea.color = "black";
+        updatedNavArea.borderBottom = "black 1px solid";
+      } else {
+        updatedNavArea.color = "white";
+      }
     }
-  }, [scrollPosition, location]);
+    return updatedNavArea; // 不再更新狀態，僅返回更新後的值
+  }, [scrollPosition, location.pathname]);
 
   useEffect(() => {
     window.addEventListener("scroll", scroll);
@@ -42,10 +41,11 @@ const NavArea = ({ currentuser }) => {
       window.removeEventListener("scroll", scroll);
     };
   }, [scroll]);
-
   useEffect(() => {
-    changeNavStyle();
+    const updatedNavArea = changeNavStyle();
+    setnavArea(updatedNavArea);
   }, [changeNavStyle]);
+
   return (
     <Container className="stickyPosition" style={navArea} fluid>
       <Row>
