@@ -8,10 +8,7 @@ import Main from "../components/Main";
 const MusicPlauerList = () => {
   const location = useLocation();
   const genreType = location.pathname.slice(8);
-  console.log(genreType);
   let trackToshow = musicTracks.filter((item) => genreType === item.type);
-  console.log(trackToshow);
-  console.log(trackToshow.musics);
   const [track /**/] = useState(trackToshow[0]);
 
   return (
@@ -39,19 +36,6 @@ const MusicPlauerList = () => {
                   {item.type}
                 </a>
               ))}
-
-              {/* <figure>
-              <img src={require("../assets/g-funk2.jpg")} alt="" />
-              <figcaption></figcaption>
-            </figure>
-            <figure>
-              <img src={require("../assets/lofi2.jpg")} alt="" />
-              <figcaption></figcaption>
-            </figure>
-            <figure>
-              <img src={require("../assets/R&B.jpg")} alt="" />
-              <figcaption></figcaption>
-            </figure> */}
             </div>
           </section>
         </Col>

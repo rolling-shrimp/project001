@@ -15,15 +15,7 @@ const NavArea = ({ currentuser }) => {
     updateScrollPosition();
   }, []);
 
-  useEffect(() => {
-    window.addEventListener("scroll", scroll);
-
-    return () => {
-      window.removeEventListener("scroll", scroll);
-    };
-  }, [scroll]);
-
-  useEffect(() => {
+  const changeNavStyle = useCallback(() => {
     if (location.pathname !== "/") {
       setnavArea({
         ...navArea,
@@ -41,7 +33,19 @@ const NavArea = ({ currentuser }) => {
           })
         : setnavArea({ color: "white" });
     }
-  }, [scrollPosition, location, navArea]);
+  }, [scrollPosition, location]);
+
+  useEffect(() => {
+    window.addEventListener("scroll", scroll);
+
+    return () => {
+      window.removeEventListener("scroll", scroll);
+    };
+  }, [scroll]);
+
+  useEffect(() => {
+    changeNavStyle();
+  }, [changeNavStyle]);
   return (
     <Container className="stickyPosition" style={navArea} fluid>
       <Row>
