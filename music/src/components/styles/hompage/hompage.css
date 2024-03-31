@@ -23,7 +23,7 @@ iframe {
 }
 
 .musicGenre {
-  height: 100vh;
+  min-height: 120vh;
   background-color: rgb(228, 226, 226);
 }
 
@@ -71,6 +71,6 @@ iframe {
 }
 @media screen and (max-width: 576px) {
   .musicGenre {
-    height: 50vh;
+    min-height: 70vh;
   }
 }/*# sourceMappingURL=hompage.css.map */

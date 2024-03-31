@@ -50,20 +50,27 @@ const MusicPlauerList = () => {
           {" "}
           <Main>
             {track.musics.map((item) => (
-              <div class="music">
+              <div
+                style={{ border: "solid 1px black" }}
+                className="w-75 p-1 mb-2"
+              >
                 <h2>{item.name} &nbsp; </h2>
                 <audio src={item.src} controls></audio>
-                {/* <div class="author">
+                <div>
                   <p>
                     <span>By &nbsp;</span>
-                    <span
-                      style={{ textDecoration: "underline" }}
-                      class="theNmae"
-                    >
-                    
+                    <span style={{ textDecoration: "underline" }}>
+                      {item.author}
                     </span>
+                    <span>&nbsp;</span>
+                    <a href={item.ahthorLink}>
+                      <img
+                        className="imgIcon"
+                        src={require("../components/assets/instagram.png")}
+                      />
+                    </a>
                   </p>
-                </div> */}
+                </div>
               </div>
             ))}
           </Main>

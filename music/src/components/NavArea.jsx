@@ -6,11 +6,15 @@ import Navs from "./Navs";
 const NavArea = ({ currentuser }) => {
   const location = useLocation();
   const [navArea, setnavArea] = useState({ color: "white" });
-  const [scrollPosition, setScrollPosition] = useState(0);
+  const [scrollPosition, setScrollPosition] = useState({ x: 0, y: 0 });
 
   const scroll = useCallback(() => {
     const updateScrollPosition = () => {
-      setScrollPosition(window.scrollY);
+      setScrollPosition({
+        ...scrollPosition,
+        y: window.scrollY,
+        x: window.screenX,
+      });
     };
     updateScrollPosition();
   }, []);
@@ -23,7 +27,10 @@ const NavArea = ({ currentuser }) => {
       updatedNavArea.color = "black";
       updatedNavArea.borderBottom = "black 1px solid";
     } else {
-      if (scrollPosition > 0) {
+      if (scrollPosition.x <= 576) {
+        updatedNavArea = { ...updatedNavArea, color: "black " };
+      }
+      if (scrollPosition.y > 0) {
         updatedNavArea.backgroundColor = "white";
         updatedNavArea.color = "black";
         updatedNavArea.borderBottom = "black 1px solid";
@@ -32,7 +39,7 @@ const NavArea = ({ currentuser }) => {
       }
     }
     return updatedNavArea; // 不再更新狀態，僅返回更新後的值
-  }, [scrollPosition, location.pathname]);
+  }, [scrollPosition.x, scrollPosition.y, location.pathname]);
 
   useEffect(() => {
     window.addEventListener("scroll", scroll);

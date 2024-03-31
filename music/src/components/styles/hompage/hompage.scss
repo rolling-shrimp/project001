@@ -18,7 +18,7 @@ iframe {
   background-color: rgba(0, 0, 0, 0.466);
 }
 .musicGenre {
-  height: 100vh;
+  min-height: 120vh;
   background-color: rgb(228, 226, 226);
   // background-color: gray;
 }
@@ -63,6 +63,6 @@ iframe {
 }
 @media screen and (max-width: 576px) {
   .musicGenre {
-    height: 50vh;
+    min-height: 70vh;
   }
 }
