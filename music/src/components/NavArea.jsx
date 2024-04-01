@@ -6,11 +6,11 @@ import Navs from "./Navs";
 
 const NavArea = ({ setcurrentuser, currentuser, location }) => {
   // const location = useLocation();
-  const [width, setWidth] = useState(null);
+  const [width, setWidth] = useState(window.innerWidth);
   const [scroll, setScroll] = useState(0);
   const [navArea, setnavArea] = useState({});
 
-  //update the width of the device
+  // update the width of the device
   const resizeWidth = useCallback(() => {
     setWidth(window.innerWidth);
   }, []);
@@ -23,6 +23,8 @@ const NavArea = ({ setcurrentuser, currentuser, location }) => {
   }, [resizeWidth]);
 
   useEffect(() => {
+    console.log("check if width <= 576");
+    console.log(width <= 576);
     if (width <= 576) {
       setnavArea({ color: "black" });
     } else {
@@ -44,25 +46,24 @@ const NavArea = ({ setcurrentuser, currentuser, location }) => {
 
   useEffect(() => {
     if (location === "/") {
-      scroll > 0
-        ? setnavArea({
-            color: "black",
-            backgroundColor: "white",
-            borderBottom: "black solid 1px",
-          })
-        : setnavArea({ color: "white" });
-      // if (window.innerWidth > 576) {
-      // }
+      if (width > 576) {
+        scroll > 0
+          ? setnavArea({
+              color: "black",
+              backgroundColor: "white",
+              borderBottom: "black solid 1px",
+            })
+          : setnavArea({ color: "white" });
+      }
     }
-  }, [scroll, location]);
+  }, [scroll, location, width]);
   useEffect(() => {
-    location !== "/"
-      ? setnavArea({
-          color: "black",
-          backgroundColor: "white",
-          borderBottom: "black solid 1px",
-        })
-      : setnavArea({ color: "white" });
+    location !== "/" &&
+      setnavArea({
+        color: "black",
+        backgroundColor: "white",
+        borderBottom: "black solid 1px",
+      });
   }, [location]);
 
   return (
