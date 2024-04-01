@@ -23,14 +23,18 @@ const NavArea = ({ setcurrentuser, currentuser, location }) => {
   }, [resizeWidth]);
 
   useEffect(() => {
-    console.log("check if width <= 576");
-    console.log(width <= 576);
     if (width <= 576) {
       setnavArea({ color: "black" });
     } else {
-      setnavArea({ color: "white" });
+      location === "/"
+        ? setnavArea({ color: "white" })
+        : setnavArea({
+            color: "black",
+            backgroundColor: "white",
+            borderBottom: "black solid 1px",
+          });
     }
-  }, [width]);
+  }, [width, location]);
 
   const updateScroll = useCallback(() => {
     setScroll(window.scrollY);
