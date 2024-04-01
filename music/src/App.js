@@ -1,4 +1,4 @@
-import { Routes, Route, useLocation } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import { useState, useCallback, useEffect, createContext } from "react";
 import authService from "./components/authservice";
 import NavArea from "./components/NavArea";

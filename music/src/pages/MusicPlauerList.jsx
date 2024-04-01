@@ -23,12 +23,7 @@ const MusicPlauerList = ({ setLocation }) => {
           <section className="leftSide w-100 p-5  d-flex flex-column align-items-center justify-content-start">
             <div class="h-50 d-flex flex-column justify-content-center align-items-center">
               <Figure className="figureElement">
-                <Figure.Image
-                  width={150}
-                  height={150}
-                  src={track.imgSrc}
-                  alt=""
-                />
+                <Figure.Image width={150} height={150} src={track.imgSrc} />
               </Figure>
             </div>
             <div

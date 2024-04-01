@@ -54,7 +54,7 @@ const NavArea = ({ setcurrentuser, currentuser, location }) => {
       // if (window.innerWidth > 576) {
       // }
     }
-  }, [scroll]);
+  }, [scroll, location]);
   useEffect(() => {
     location !== "/"
       ? setnavArea({
