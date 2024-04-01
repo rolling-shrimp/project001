@@ -63,6 +63,7 @@ const MusicPlauerList = ({ setLocation }) => {
                       <img
                         className="imgIcon"
                         src={require("../components/assets/instagram.png")}
+                        alt="instagram"
                       />
                     </a>
                   </p>
