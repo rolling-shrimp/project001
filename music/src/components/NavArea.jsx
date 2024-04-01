@@ -1,57 +1,69 @@
 import React, { useState, useCallback, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+// import { useLocation } from "react-router-dom";
 import { Container, Col, Row } from "react-bootstrap";
 import DropDown from "./DropDown";
 import Navs from "./Navs";
-const NavArea = ({ currentuser }) => {
-  const location = useLocation();
-  const [navArea, setnavArea] = useState({ color: "white" });
-  const [scrollPosition, setScrollPosition] = useState({ x: 0, y: 0 });
 
-  const scroll = useCallback(() => {
-    const updateScrollPosition = () => {
-      setScrollPosition({
-        ...scrollPosition,
-        y: window.scrollY,
-        x: window.screenX,
-      });
-    };
-    updateScrollPosition();
+const NavArea = ({ setcurrentuser, currentuser, location }) => {
+  // const location = useLocation();
+  const [width, setWidth] = useState(null);
+  const [scroll, setScroll] = useState(0);
+  const [navArea, setnavArea] = useState({});
+
+  //update the width of the device
+  const resizeWidth = useCallback(() => {
+    setWidth(window.innerWidth);
   }, []);
 
-  const changeNavStyle = useCallback(() => {
-    console.log("activate useCallbak");
-    let updatedNavArea = { backgroundColor: "", color: "", borderBottom: "" };
-    if (location.pathname !== "/") {
-      updatedNavArea.backgroundColor = "white";
-      updatedNavArea.color = "black";
-      updatedNavArea.borderBottom = "black 1px solid";
-    } else {
-      if (scrollPosition.x <= 576) {
-        updatedNavArea = { ...updatedNavArea, color: "black " };
-      }
-      if (scrollPosition.y > 0) {
-        updatedNavArea.backgroundColor = "white";
-        updatedNavArea.color = "black";
-        updatedNavArea.borderBottom = "black 1px solid";
-      } else {
-        updatedNavArea = { ...updatedNavArea, color: "white" };
-      }
-    }
-    return updatedNavArea; // 不再更新狀態，僅返回更新後的值
-  }, [scrollPosition.x, scrollPosition.y, location.pathname]);
+  useEffect(() => {
+    window.addEventListener("resize", resizeWidth);
+    return () => {
+      window.addEventListener("resize", resizeWidth);
+    };
+  }, [resizeWidth]);
 
   useEffect(() => {
-    window.addEventListener("scroll", scroll);
+    if (width <= 576) {
+      setnavArea({ color: "black" });
+    } else {
+      setnavArea({ color: "white" });
+    }
+  }, [width]);
+
+  const updateScroll = useCallback(() => {
+    setScroll(window.scrollY);
+  }, []);
+
+  useEffect(() => {
+    window.addEventListener("scroll", updateScroll);
 
     return () => {
-      window.removeEventListener("scroll", scroll);
+      window.removeEventListener("scroll", updateScroll);
     };
+  }, [updateScroll]);
+
+  useEffect(() => {
+    if (location === "/") {
+      scroll > 0
+        ? setnavArea({
+            color: "black",
+            backgroundColor: "white",
+            borderBottom: "black solid 1px",
+          })
+        : setnavArea({ color: "white" });
+      // if (window.innerWidth > 576) {
+      // }
+    }
   }, [scroll]);
   useEffect(() => {
-    const updatedNavArea = changeNavStyle();
-    setnavArea(updatedNavArea);
-  }, [changeNavStyle]);
+    location !== "/"
+      ? setnavArea({
+          color: "black",
+          backgroundColor: "white",
+          borderBottom: "black solid 1px",
+        })
+      : setnavArea({ color: "white" });
+  }, [location]);
 
   return (
     <Container className="stickyPosition" style={navArea} fluid>
@@ -66,7 +78,12 @@ const NavArea = ({ currentuser }) => {
           </div>
         </Col>
         <Col className="smallWidthColumn " xs={2} sm={8} md="7">
-          <Navs navArea={navArea} currentuser={currentuser} type="outOfDrop" />
+          <Navs
+            setcurrentuser={setcurrentuser}
+            navArea={navArea}
+            currentuser={currentuser}
+            type="outOfDrop"
+          />
           <DropDown navArea={navArea} currentuser={currentuser} />
         </Col>
       </Row>

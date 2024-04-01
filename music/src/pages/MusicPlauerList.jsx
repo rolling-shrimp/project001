@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { Container, Row, Col, Figure } from "react-bootstrap";
-
 import { musicTracks } from "./musicTracks";
 import { useLocation } from "react-router-dom";
 import Main from "../components/Main";
+import TheCatchLocation from "./theCatchLocation";
 
-const MusicPlauerList = () => {
+const MusicPlauerList = ({ setLocation }) => {
+  TheCatchLocation(setLocation);
   const location = useLocation();
   const genreType = location.pathname.slice(8);
   let trackToshow = musicTracks.filter((item) => genreType === item.type);

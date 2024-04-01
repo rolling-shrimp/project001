@@ -1,5 +1,6 @@
 import axios from "axios";
-const API_URL = "http://localhost:3502/api/member";
+let basicUrl = "http://localhost:3502/";
+const API_URL = `${basicUrl}api/member`;
 class profileService {
   get(id) {
     let token;

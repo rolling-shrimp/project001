@@ -1,5 +1,5 @@
-import { Routes, Route } from "react-router-dom";
-import { useState, useCallback, useEffect } from "react";
+import { Routes, Route, useLocation } from "react-router-dom";
+import { useState, useCallback, useEffect, createContext } from "react";
 import authService from "./components/authservice";
 import NavArea from "./components/NavArea";
 import Footer from "./components/Footer";
@@ -12,9 +12,11 @@ import MusicPlauerList from "./pages/MusicPlauerList";
 
 import "./components/styles/appJs/appjs.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+export const objectFromAppjs = createContext();
 
 function App() {
   let [currentuser, setcurrentuser] = useState(authService.getCurrentUser());
+  const [location, setLocation] = useState("");
   const checkIfLogIn = useCallback(() => {
     setcurrentuser(authService.getCurrentUser());
   }, []);
@@ -24,15 +26,36 @@ function App() {
 
   return (
     <div className="App relativePsotion">
-      <NavArea currentuser={currentuser} />
+      <NavArea
+        location={location}
+        setcurrentuser={setcurrentuser}
+        currentuser={currentuser}
+      />
       <Routes>
-        <Route path="/" element={<Hompeage />} />
-        <Route path="mcourse" element={<MuCourse />}></Route>
-        <Route path="/signup" element={<SingnUp />} />
-        <Route path="/login" element={<SingnUp />} />
-        <Route path="/log" element={<Log />} />
-        <Route path="/player/:id" element={<MusicPlauerList />} />
-        <Route path="/show-beat-data/:id" element={<User />} />
+        <Route
+          path="/"
+          element={<Hompeage setLocation={setLocation} location={location} />}
+        />
+        <Route
+          path="mcourse"
+          element={<MuCourse setLocation={setLocation} location={location} />}
+        ></Route>
+
+        <Route
+          path="/log"
+          element={<Log setLocation={setLocation} location={location} />}
+        />
+        <Route
+          path="/player/:id"
+          element={
+            <MusicPlauerList setLocation={setLocation} location={location} />
+          }
+        />
+        <Route
+          path="/show-beat-data/:id"
+          element={<User setLocation={setLocation} location={location} />}
+        />
+
         {/* <Route
           path="/api/member/music"
           element={
@@ -40,6 +63,19 @@ function App() {
           }
         /> */}
       </Routes>
+      <objectFromAppjs.Provider value={{ setcurrentuser }}>
+        <Routes>
+          <Route
+            path="/signup"
+            element={<SingnUp setLocation={setLocation} />}
+          />
+          <Route
+            path="/login"
+            element={<SingnUp setLocation={setLocation} />}
+          />
+        </Routes>
+      </objectFromAppjs.Provider>
+
       <Footer />
     </div>
   );

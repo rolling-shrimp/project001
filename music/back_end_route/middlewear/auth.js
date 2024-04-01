@@ -2,12 +2,10 @@ import { Router } from "express";
 const router = Router();
 import { Users } from "../models/models.js";
 import bcrypt from "bcrypt";
-
-// import passwordUtils from "./comparePassword.js";
+import jtoken from "jsonwebtoken";
+import { comparePassword } from "./comparePassword.js";
 // const User = require("./validation").User;
 // const login = require("./validation").login;
-
-// const jtoken = require("jsonwebtoken");
 
 // Router.use((req, res, next) => {
 //   console.log("router.use() receiving request");
@@ -53,44 +51,46 @@ router.post("/signup", async (req, res) => {
   }
 });
 
-// Router.post("/login", async (req, res) => {
-//   //validation
-//   // const { error } = login(req.body);
-//   // if (error) return res.status(400).send(error.details[0].message);
-//   const { account, password } = req.body;
-//   //先找出有沒有該帳號，若是沒有，回報沒有該帳號Us
+router.post("/login", async (req, res) => {
+  //validation
+  // const { error } = login(req.body);
+  // if (error) return res.status(400).send(error.details[0].message);
+  console.log(req.body);
+  const { account, password } = req.body;
+  //先找出有沒有該帳號，若是沒有，回報沒有該帳號Us
+  let userAccount = await Users.findOne({ account });
+  if (!userAccount) {
+    res.status(400).send("該帳號還沒註冊");
+  } else {
+    const passwordMatched = comparePassword(password, userAccount.password);
 
-//   const passwordMatched = passwordUtils.comparePassword(
-//     password,
-//     userAccount.password
-//   );
-
-//   if (passwordMatched) {
-//     // 密码匹配，登录成功
-//     // res.status(200).json({ message: "Login successful" });
-//     const jtokenObject = {
-//       id: userAccount.id,
-//       name: userAccount.name,
-//       email: userAccount.email,
-//       phone: userAccount.phone,
-//       account: userAccount.account,
-//     };
-//     const thetoken = jtoken.sign(jtokenObject, process.env.SECRET);
-//     res.send({
-//       message: `${userAccount.name} 你好，歡迎來到入魂音樂，帶你一起飛 `,
-//       token: "jwt " + thetoken,
-//       user: {
-//         id: userAccount.id,
-//         name: userAccount.name,
-//         email: userAccount.email,
-//         phone: userAccount.phone,
-//         account: userAccount.account,
-//       },
-//     });
-//   } else {
-//     // 密码不匹配，登录失败
-//     res.status(401).json({ error: "Invalid credentials" });
-//   }
-// });
+    if (passwordMatched) {
+      // the password matched ligin sueecess
+      const jtokenObject = {
+        id: userAccount.id,
+        name: userAccount.name,
+        email: userAccount.email,
+        phone: userAccount.phone,
+        account: userAccount.account,
+      };
+      const thetoken = jtoken.sign(jtokenObject, process.env.SECRET);
+      res.send({
+        message: `${userAccount.name} 你好，歡迎來到入魂音樂，帶你一起飛 `,
+        token: "jwt " + thetoken,
+        user: {
+          id: userAccount.id,
+          name: userAccount.name,
+          email: userAccount.email,
+          phone: userAccount.phone,
+          account: userAccount.account,
+          role: userAccount.role,
+        },
+      });
+    } else {
+      // 密码不匹配，登录失败
+      res.status(401).send({ error: "Invalid credentials" });
+    }
+  }
+});
 
 export const auth = router;

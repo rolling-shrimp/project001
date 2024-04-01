@@ -1,11 +1,14 @@
 import React from "react";
 import { Nav } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 
-const Navs = ({ currentuser, navArea, type }) => {
+const Navs = ({ setcurrentuser, currentuser, navArea, type }) => {
+  const navigate = useNavigate();
   const logout = () => {
     localStorage.removeItem("user");
     alert("你已經登出，頁面回到首頁");
-    window.location = "/";
+    setcurrentuser(null);
+    navigate("/");
   };
 
   return (
@@ -41,9 +44,13 @@ const Navs = ({ currentuser, navArea, type }) => {
               </Nav.Link>
             </Nav.Item>
             <Nav.Item>
-              <button onClick={logout} type="button">
+              <Nav.Link
+                style={{ color: navArea.color }}
+                onClick={logout}
+                href="#"
+              >
                 登出
-              </button>
+              </Nav.Link>
             </Nav.Item>
           </>
         ) : (

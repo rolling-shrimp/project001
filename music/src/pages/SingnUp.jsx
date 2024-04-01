@@ -1,11 +1,13 @@
 import React from "react";
 import { Container } from "react-bootstrap";
 import { useLocation } from "react-router-dom";
+import TheCatchLocation from "./theCatchLocation";
 import FormArea from "../components/FormArea";
 import FormToFill from "../components/FormToFill";
 import TheTitle from "../components/TheTitle";
-const SingnUp = () => {
+const SingnUp = ({ setLocation }) => {
   const location = useLocation();
+  TheCatchLocation(setLocation);
   return (
     <Container fluid>
       <TheTitle>

@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useState } from "react";
+import TheCatchLocation from "./theCatchLocation";
 import TheTitle from "../components/TheTitle";
 import Introduce from "../components/Introduce";
 import Teacher from "../components/Teacher";
@@ -15,7 +16,8 @@ const TitleParagraph = ({ h2, children, ptag }) => {
   );
 };
 
-const Hompeage = () => {
+const Hompeage = ({ setLocation }) => {
+  TheCatchLocation(setLocation);
   const [itemMd, setItemMd] = useState({
     contentMd1: 3,
     contentMd2: 3,
@@ -33,27 +35,31 @@ const Hompeage = () => {
       window.addEventListener("resize", resizeWidth);
     };
   }, [resizeWidth]);
+
   useEffect(() => {
     if (width != null) {
-      width <= 1000
-        ? setItemMd({
-            ...itemMd,
-            contentMd1: 6,
-            contentMd2: 4,
-            contentMd3: 12,
-            leftCol: "auto",
-            rightCol: "auto",
-          })
-        : setItemMd({
-            ...itemMd,
-            contentMd1: 3,
-            contentMd2: 3,
-            contentMd3: 3,
-            leftCol: 2,
-            rightCol: 1,
-          });
+      setItemMd((prevItemMd) => {
+        return width <= 1000
+          ? {
+              ...prevItemMd,
+              contentMd1: 6,
+              contentMd2: 4,
+              contentMd3: 12,
+              leftCol: "auto",
+              rightCol: "auto",
+            }
+          : {
+              ...prevItemMd,
+              contentMd1: 3,
+              contentMd2: 3,
+              contentMd3: 3,
+              leftCol: 2,
+              rightCol: 1,
+            };
+      });
     }
-  }, [width, itemMd]);
+  }, [width]);
+
   return (
     <Container fluid>
       <Row>

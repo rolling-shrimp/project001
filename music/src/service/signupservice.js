@@ -1,12 +1,15 @@
 import axios from "axios";
-const url = "http://localhost:3502/api/account/signup";
+let basicurl = "http://localhost:3502";
+const url = `${basicurl}/api/account/signup`;
+const loginurl = `${basicurl}/api/account/login`;
 class signupp {
   post(obj) {
+    let urlofBackEnd = obj.location === "/signup" ? url : loginurl;
     let signupData = {
       ...obj,
     };
     console.log(signupData);
-    return axios.post(url, signupData);
+    return axios.post(urlofBackEnd, signupData);
   }
 }
 let signuping = new signupp();
