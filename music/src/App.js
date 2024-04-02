@@ -9,6 +9,7 @@ import User from "./components/userData";
 import SingnUp from "./pages/SingnUp";
 import Log from "./components/loginHom";
 import MusicPlauerList from "./pages/MusicPlauerList";
+import TeacherPage from "./pages/TeacherPage";
 
 import "./components/styles/appJs/appjs.css";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -55,15 +56,8 @@ function App() {
           path="/show-beat-data/:id"
           element={<User setLocation={setLocation} location={location} />}
         />
-
-        {/* <Route
-          path="/api/member/music"
-          element={
-            <IDMem currentuser={currentuser} setcurrentuser={setcurrentuser} />
-          }
-        /> */}
       </Routes>
-      <objectFromAppjs.Provider value={{ setcurrentuser }}>
+      <objectFromAppjs.Provider value={{ setcurrentuser, currentuser }}>
         <Routes>
           <Route
             path="/signup"
@@ -72,6 +66,10 @@ function App() {
           <Route
             path="/login"
             element={<SingnUp setLocation={setLocation} />}
+          />
+          <Route
+            path="/personalPage"
+            element={<TeacherPage setLocation={setLocation} />}
           />
         </Routes>
       </objectFromAppjs.Provider>

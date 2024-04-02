@@ -64,7 +64,27 @@ export const Users = mongoose.model("User", UserModel);
 
 // the CourseModel
 const CourseModel = new Schema({
-  account: {},
-  password: {},
+  id: { type: String },
+  title: {
+    type: String,
+    required: true,
+  },
+  description: {
+    type: String,
+    required: true,
+  },
+  price: {
+    type: Number,
+    required: true,
+  },
+  date: { type: Date, required: true },
+  place: {
+    type: String,
+    default: "700台南市中西區神農街2巷29號 (民族路大苑子飲料店對面的巷子)",
+  },
+  students: {
+    type: [String],
+    default: [],
+  },
 });
 export const Course = mongoose.model("Course", CourseModel);

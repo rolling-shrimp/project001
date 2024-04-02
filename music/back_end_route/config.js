@@ -1,10 +1,11 @@
 import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
-import jwt from "jsonwebtoken";
-// import passport from "passport";
-// import { thePassport } from "./middlewear/passport";
+import passport from "passport";
+import { thePassport } from "./middlewear/passport.js";
+thePassport(passport);
 import { auth } from "./middlewear/auth.js";
+import { loginauth } from "./middlewear/loginauth.js";
 import cors from "cors";
 // import { json } from "body-parser";
 
@@ -28,11 +29,11 @@ app.use(express.static("public"));
 app.use(express.json());
 app.use(cors());
 app.use("/api/account", auth);
-// app.use(
-//   "/api/member",
-//   passport.authenticate("jwt", { session: false }),
-//   loginauth
-// );
+app.use(
+  "/api/member",
+  passport.authenticate("jwt", { session: false }),
+  loginauth
+);
 
 app.listen(3502, () => {
   console.log("port 3502 receiving request.");

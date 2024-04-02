@@ -33,6 +33,9 @@ class profileService {
       },
     });
   }
+  createCourse(obj) {
+    return axios.post(API_URL, obj);
+  }
 }
 let profileServicing = new profileService();
 export default profileServicing;

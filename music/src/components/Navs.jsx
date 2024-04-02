@@ -36,10 +36,7 @@ const Navs = ({ setcurrentuser, currentuser, navArea, type }) => {
         {currentuser ? (
           <>
             <Nav.Item>
-              <Nav.Link
-                style={{ color: navArea.color }}
-                href={`/api/member/music`}
-              >
+              <Nav.Link style={{ color: navArea.color }} href={`/personalPage`}>
                 個人頁
               </Nav.Link>
             </Nav.Item>

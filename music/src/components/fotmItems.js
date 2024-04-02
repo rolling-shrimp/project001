@@ -14,7 +14,7 @@ export let signupItems = [
   new formItem("帳號", "text", "", "account"),
   new formItem("密碼", "password", "", "password"),
 ];
-console.log(signupItems);
+
 export let signupState = signupItems.reduce((acc, curr) => {
   return { ...acc, [curr.itemName]: curr.initialValue };
 }, {});
@@ -24,5 +24,21 @@ export let loginItems = [
   new formItem("密碼", "password", "", "password"),
 ];
 export let loginState = loginItems.reduce((acc, curr) => {
+  return { ...acc, [curr.itemName]: curr.initialValue };
+}, {});
+
+export let createCourseItems = [
+  new formItem("課程名稱", "text", "", "title"),
+  new formItem("價錢", "number", 900, "price"),
+  {
+    placeholder: "課程描述",
+
+    initialValue: "",
+    itemName: "description",
+  },
+  new formItem("日期", "date", "", "title"),
+];
+
+export let courseState = createCourseItems.reduce((acc, curr) => {
   return { ...acc, [curr.itemName]: curr.initialValue };
 }, {});

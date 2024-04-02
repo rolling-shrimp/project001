@@ -1,16 +1,11 @@
 import { Router } from "express";
 const router = Router();
 import { Users } from "../models/models.js";
-import bcrypt from "bcrypt";
 import jtoken from "jsonwebtoken";
 import { comparePassword } from "./comparePassword.js";
 // const User = require("./validation").User;
 // const login = require("./validation").login;
 
-// Router.use((req, res, next) => {
-//   console.log("router.use() receiving request");
-//   next();
-// });
 router.get("/testapi", (req, res) => {
   const objmsg = { message: "test API is working" };
   return res.json(objmsg);
