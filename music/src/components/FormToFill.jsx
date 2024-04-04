@@ -17,7 +17,7 @@ const FormToFill = () => {
   return (
     <>
       {/* {errmessage && <div className="alert alert-danger">{errmessage}</div>} */}
-      <Form className="FormArea d-flex flex-column align-items-center justify-content-center">
+      <Form className="FormArea px-5 d-flex flex-column align-items-center justify-content-center">
         {location.pathname === "/signup" && (
           <FormGroup
             theArray={signupItems}

@@ -10,6 +10,7 @@ const TheCatchLocation = (par) => {
   useEffect(() => {
     returnLocation();
   }, [returnLocation]);
+  return { location: location.pathname };
 };
 
 export default TheCatchLocation;

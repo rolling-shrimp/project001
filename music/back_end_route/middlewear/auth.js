@@ -60,11 +60,11 @@ router.post("/login", async (req, res) => {
     const passwordMatched = comparePassword(password, userAccount.password);
 
     if (passwordMatched) {
-      // the password matched ligin sueecess
+      // the password matched login sueecess
       const jtokenObject = {
         id: userAccount.id,
         name: userAccount.name,
-        email: userAccount.email,
+        email: userAccount.mail,
         phone: userAccount.phone,
         account: userAccount.account,
       };
@@ -75,7 +75,7 @@ router.post("/login", async (req, res) => {
         user: {
           id: userAccount.id,
           name: userAccount.name,
-          email: userAccount.email,
+          mail: userAccount.mail,
           phone: userAccount.phone,
           account: userAccount.account,
           role: userAccount.role,

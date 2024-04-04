@@ -1,13 +1,13 @@
 import React from "react";
 import { Nav } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-
+import Swal from "sweetalert2";
 const Navs = ({ setcurrentuser, currentuser, navArea, type }) => {
   const navigate = useNavigate();
   const logout = () => {
     localStorage.removeItem("user");
-    alert("你已經登出，頁面回到首頁");
-    setcurrentuser(null);
+    Swal.fire({ title: "登出成功，回到首頁", confirmButtonColor: "black" });
+    setcurrentuser({ token: null, user: { id: null, role: null } });
     navigate("/");
   };
 
@@ -33,7 +33,7 @@ const Navs = ({ setcurrentuser, currentuser, navArea, type }) => {
             課程報名
           </Nav.Link>
         </Nav.Item>
-        {currentuser ? (
+        {currentuser.token ? (
           <>
             <Nav.Item>
               <Nav.Link style={{ color: navArea.color }} href={`/personalPage`}>

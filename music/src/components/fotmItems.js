@@ -36,7 +36,7 @@ export let createCourseItems = [
     initialValue: "",
     itemName: "description",
   },
-  new formItem("日期", "date", "", "title"),
+  new formItem("日期", "date", "", "date"),
 ];
 
 export let courseState = createCourseItems.reduce((acc, curr) => {

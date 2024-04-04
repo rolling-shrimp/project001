@@ -39,7 +39,13 @@ function App() {
         />
         <Route
           path="mcourse"
-          element={<MuCourse setLocation={setLocation} location={location} />}
+          element={
+            <MuCourse
+              currentuser={currentuser}
+              setLocation={setLocation}
+              location={location}
+            />
+          }
         ></Route>
 
         <Route

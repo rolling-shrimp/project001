@@ -16,6 +16,7 @@ const UserModel = new Schema({
     minLength: 6,
     maxLength: 100,
   },
+  phone: { type: String, required: true, length: 10 },
   account: { type: String, required: true, minLength: 6, maxLength: 20 },
   password: {
     type: String,
@@ -83,7 +84,7 @@ const CourseModel = new Schema({
     default: "700台南市中西區神農街2巷29號 (民族路大苑子飲料店對面的巷子)",
   },
   students: {
-    type: [String],
+    type: [Object],
     default: [],
   },
 });

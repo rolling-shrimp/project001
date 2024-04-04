@@ -20,6 +20,32 @@ router.get("/instructor/:instructor_id", (req, res) => {
     });
 });
 
+//find the courses students has enrolled
+router.get("/student/:_student_id", async (req, res) => {
+  let { _student_id } = req.params;
+  console.log(_student_id);
+  try {
+    let theCourses = await Course.find({});
+    let filterCourses = theCourses.filter((item) => {
+      for (let obj of item.students) {
+        if (obj !== null && obj.id === _student_id) {
+          return true;
+        }
+      }
+      return false;
+    });
+    let showCourse = filterCourses.map((item) => {
+      const { _id, title, description, price, date, place } = item;
+      return { _id, title, description, price, date, place };
+    });
+    console.log(showCourse);
+    res.status(200).send(showCourse);
+  } catch (e) {
+    console.error(e);
+    res.status(500).send("無法找到課程");
+  }
+});
+
 // teacher create the course
 router.post("/", async (req, res) => {
   console.log("WE are herere....");
@@ -41,16 +67,18 @@ router.post("/", async (req, res) => {
     res.status(200).send("New course has been saved.");
   } catch (err) {
     res.status(400).send("Cannot save course.");
+    console.error(err);
   }
 });
 
 //student enroll course
 router.post("/enroll/:_id", async (req, res) => {
   let { _id } = req.params;
-  let { user_id } = req.body;
+  let { studentInf } = req.body;
+  console.log(studentInf);
   try {
     let course = await Course.findOne({ _id });
-    course.students.push(user_id);
+    course.students.push(studentInf);
     await course.save();
     res.send("報名成功，請於當天準時出席");
   } catch (err) {
@@ -58,21 +86,14 @@ router.post("/enroll/:_id", async (req, res) => {
   }
 });
 
-router.get("/musicCourr/:id", (req, res) => {
-  const id = req.params.id;
-  const query = `SELECT account.id, the_courses_forsell.course_name, the_courses_forsell.price
-FROM account
-INNER JOIN member_buy_course ON member_buy_course.user_id = account.id
-INNER JOIN the_courses_forsell ON member_buy_course.name LIKE CONCAT('%', the_courses_forsell.course_name, '%')
-WHERE account.id = ?`;
-  connection.query(query, [id], (err, result) => {
-    if (err) {
-      console.log(err);
-      res.sendStatus(500);
-    } else {
-      res.json(result);
-    }
-  });
+router.get("/musicCourr", (req, res) => {
+  Course.find({})
+    .then((data) => {
+      res.status(200).send(data);
+    })
+    .catch((e) => {
+      console.error(e);
+    });
 });
 router.post("/memberbuying", (req, res) => {});
 

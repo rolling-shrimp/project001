@@ -1,6 +1,13 @@
 class Authservice {
   getCurrentUser() {
-    return JSON.parse(localStorage.getItem("user"));
+    if (localStorage.getItem("user")) {
+      return JSON.parse(localStorage.getItem("user"));
+    } else {
+      return {
+        token: null,
+        user: { id: null, role: null },
+      };
+    }
   }
 }
 let authService = new Authservice();

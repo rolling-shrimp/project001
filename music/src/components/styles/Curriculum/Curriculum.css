@@ -1,7 +1,12 @@
 .curriculums {
-  width: 70%;
-  height: 70%;
+  width: 100%;
+  min-height: 100vh;
   display: grid;
   grid-template-columns: auto auto auto;
   gap: 1rem;
+  background-color: gray;
+}
+
+.topDownRow {
+  height: 20vh;
 }/*# sourceMappingURL=Curriculum.css.map */

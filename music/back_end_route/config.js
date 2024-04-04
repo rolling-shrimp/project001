@@ -6,6 +6,7 @@ import { thePassport } from "./middlewear/passport.js";
 thePassport(passport);
 import { auth } from "./middlewear/auth.js";
 import { loginauth } from "./middlewear/loginauth.js";
+import { Course } from "./models/models.js";
 import cors from "cors";
 // import { json } from "body-parser";
 
@@ -34,6 +35,15 @@ app.use(
   passport.authenticate("jwt", { session: false }),
   loginauth
 );
+app.get("/courses", (req, res) => {
+  Course.find({})
+    .then((data) => {
+      res.status(200).send(data);
+    })
+    .catch((e) => {
+      console.error(e);
+    });
+});
 
 app.listen(3502, () => {
   console.log("port 3502 receiving request.");

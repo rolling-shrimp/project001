@@ -1,14 +1,8 @@
 import React from "react";
-import { Card } from "react-bootstrap";
+import { Row, Col } from "react-bootstrap";
 import "./styles/Curriculum/Curriculum.css";
-const Curriculum = () => {
-  return (
-    <div className="curriculums">
-      <Card></Card>
-      <Card></Card>
-      <Card></Card>
-    </div>
-  );
+const Curriculum = ({ children }) => {
+  return <div className="curriculums">{children}</div>;
 };
 
 export default Curriculum;

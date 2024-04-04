@@ -2,7 +2,7 @@ import { Strategy, ExtractJwt } from "passport-jwt";
 import dotenv from "dotenv";
 
 dotenv.config();
-
+import { Users } from "../models/models.js";
 export const thePassport = (passport) => {
   const jwtOptions = {
     jwtFromRequest: ExtractJwt.fromAuthHeaderWithScheme("jwt"),
@@ -10,20 +10,22 @@ export const thePassport = (passport) => {
   };
 
   passport.use(
-    new Strategy(jwtOptions, (jwtPayload, done) => {
+    new Strategy(jwtOptions, async (jwtPayload, done) => {
       // authenticate the information of jwt
       // if authenticated, the user's infromation will be sent as jwtPayload
-      const userID = jwtPayload.id;
-      User.findOne({ _id: userID }, (err, user) => {
-        if (err) {
-          return done(err, false);
-        }
+
+      try {
+        const userID = jwtPayload.id;
+        const user = await Users.findOne({ _id: userID });
+
         if (user) {
           done(null, user);
         } else {
           done(null, false);
         }
-      });
+      } catch (err) {
+        done(err, false);
+      }
     })
   );
 };
