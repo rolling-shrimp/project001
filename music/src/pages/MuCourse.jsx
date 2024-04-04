@@ -1,9 +1,7 @@
 import React from "react";
-import { Container, Row } from "react-bootstrap";
-import Main from "../components/Main";
+import { Container } from "react-bootstrap";
 import Courses from "../components/Courses";
 import TheTitle from "../components/TheTitle";
-import Curriculum from "../components/Curriculum";
 import TheCatchLocation from "./theCatchLocation";
 
 // import "./styles/styles.css";

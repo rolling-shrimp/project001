@@ -17,7 +17,7 @@ const GetCourseData = (location, currentuser) => {
     } catch (e) {
       console.log(e);
     }
-  }, []);
+  }, [id, location, role, token]);
   useEffect(() => {
     getCourses();
   }, [getCourses]);
