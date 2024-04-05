@@ -1,13 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Nav } from "react-bootstrap";
-import Swal from "sweetalert2";
+import { objectFromAppjs } from "../App";
 const Navs = ({ setcurrentuser, currentuser, navArea, type }) => {
-  const logout = () => {
-    localStorage.removeItem("user");
-    Swal.fire({ title: "登出成功，回到首頁", confirmButtonColor: "black" });
-    setcurrentuser({ token: null, user: { id: null, role: null } });
-    window.location = "/";
-  };
+  // const logout = () => {
+  //   localStorage.removeItem("user");
+  //   Swal.fire({ title: "登出成功，回到首頁", confirmButtonColor: "black" });
+  //   setcurrentuser({ token: null, user: { id: null, role: null } });
+  //   window.location = "/";
+  // };
+  const { logout } = useContext(objectFromAppjs);
 
   return (
     <div
@@ -41,7 +42,9 @@ const Navs = ({ setcurrentuser, currentuser, navArea, type }) => {
             <Nav.Item>
               <Nav.Link
                 style={{ color: navArea.color }}
-                onClick={logout}
+                onClick={() => {
+                  logout(setcurrentuser);
+                }}
                 href="#"
               >
                 登出

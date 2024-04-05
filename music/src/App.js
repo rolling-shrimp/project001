@@ -10,6 +10,7 @@ import SingnUp from "./pages/SingnUp";
 import Log from "./components/loginHom";
 import MusicPlauerList from "./pages/MusicPlauerList";
 import TeacherPage from "./pages/TeacherPage";
+import { logout } from "./components/logout";
 
 import "./components/styles/appJs/appjs.css";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -27,11 +28,13 @@ function App() {
 
   return (
     <div className="App relativePsotion">
-      <NavArea
-        location={location}
-        setcurrentuser={setcurrentuser}
-        currentuser={currentuser}
-      />
+      <objectFromAppjs.Provider value={logout}>
+        <NavArea
+          location={location}
+          setcurrentuser={setcurrentuser}
+          currentuser={currentuser}
+        />
+      </objectFromAppjs.Provider>
       <Routes>
         <Route
           path="/"
