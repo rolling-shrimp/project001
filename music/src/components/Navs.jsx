@@ -8,7 +8,7 @@ const Navs = ({ setcurrentuser, currentuser, navArea, type }) => {
     localStorage.removeItem("user");
     Swal.fire({ title: "登出成功，回到首頁", confirmButtonColor: "black" });
     setcurrentuser({ token: null, user: { id: null, role: null } });
-    navigate("/");
+    window.location = "/";
   };
 
   return (
