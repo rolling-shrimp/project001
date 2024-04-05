@@ -1,5 +1,5 @@
 import axios from "axios";
-let basicUrl = "http://localhost:3502/";
+let basicUrl = "https://project001-4x83.onrender.com/";
 const API_URL = `${basicUrl}api/member`;
 class profileService {
   get(id) {

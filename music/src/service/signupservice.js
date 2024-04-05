@@ -1,5 +1,5 @@
 import axios from "axios";
-let basicurl = "http://localhost:3502";
+let basicurl = "https://project001-4x83.onrender.com";
 const url = `${basicurl}/api/account/signup`;
 const loginurl = `${basicurl}/api/account/login`;
 class signupp {
