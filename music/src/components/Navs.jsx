@@ -1,9 +1,7 @@
 import React from "react";
 import { Nav } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 const Navs = ({ setcurrentuser, currentuser, navArea, type }) => {
-  const navigate = useNavigate();
   const logout = () => {
     localStorage.removeItem("user");
     Swal.fire({ title: "登出成功，回到首頁", confirmButtonColor: "black" });
