@@ -1,5 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import { useState, useCallback, useEffect, createContext } from "react";
+import { useNavigate } from "react-router-dom";
 import authService from "./components/authservice";
 import NavArea from "./components/NavArea";
 import Footer from "./components/Footer";
@@ -10,8 +11,7 @@ import SingnUp from "./pages/SingnUp";
 import Log from "./components/loginHom";
 import MusicPlauerList from "./pages/MusicPlauerList";
 import TeacherPage from "./pages/TeacherPage";
-import { logout } from "./components/logout";
-
+import Swal from "sweetalert2";
 import "./components/styles/appJs/appjs.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 export const objectFromAppjs = createContext();
@@ -19,12 +19,20 @@ export const objectFromAppjs = createContext();
 function App() {
   let [currentuser, setcurrentuser] = useState(authService.getCurrentUser());
   const [location, setLocation] = useState("");
+  const navigate = useNavigate();
   const checkIfLogIn = useCallback(() => {
     setcurrentuser(authService.getCurrentUser());
   }, []);
   useEffect(() => {
     checkIfLogIn();
   }, [checkIfLogIn]);
+  const logout = () => {
+    localStorage.removeItem("user");
+    Swal.fire({ title: "登出成功，回到首頁", confirmButtonColor: "black" });
+    setcurrentuser({ token: null, user: { id: null, role: null } });
+    // window.location = "/";
+    navigate("/");
+  };
 
   return (
     <div className="App relativePsotion">

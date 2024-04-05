@@ -8,7 +8,7 @@ const Navs = ({ setcurrentuser, currentuser, navArea, type }) => {
   //   setcurrentuser({ token: null, user: { id: null, role: null } });
   //   window.location = "/";
   // };
-  const { logout } = useContext(objectFromAppjs);
+  const logout = useContext(objectFromAppjs);
 
   return (
     <div
@@ -40,13 +40,7 @@ const Navs = ({ setcurrentuser, currentuser, navArea, type }) => {
               </Nav.Link>
             </Nav.Item>
             <Nav.Item>
-              <Nav.Link
-                style={{ color: navArea.color }}
-                onClick={() => {
-                  logout(setcurrentuser);
-                }}
-                href="#"
-              >
+              <Nav.Link style={{ color: navArea.color }} onClick={logout}>
                 登出
               </Nav.Link>
             </Nav.Item>
