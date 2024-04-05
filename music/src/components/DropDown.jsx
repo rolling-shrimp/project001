@@ -9,7 +9,12 @@ const DropDown = ({ navArea, currentuser }) => {
       title="導覽列"
       variant="dark"
     >
-      <Navs type="inTheDrop" navArea={navArea} currentuser={currentuser} />
+      <Navs
+        key="insideDropDown"
+        type="inTheDrop"
+        navArea={navArea}
+        currentuser={currentuser}
+      />
     </DropdownButton>
   );
 };

@@ -80,7 +80,7 @@ const Courses = ({ location, currentuser }) => {
       </Row>
       <Row md={12} className="px-5 ">
         {courses.map((item) => (
-          <Col className="p-2" md={4}>
+          <Col key={item.title} className="p-2" md={4}>
             <Card>
               <Card.Body>
                 <Card.Title>{item.title}</Card.Title>

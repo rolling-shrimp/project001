@@ -84,6 +84,7 @@ const NavArea = ({ setcurrentuser, currentuser, location }) => {
         </Col>
         <Col className="smallWidthColumn " xs={2} sm={8} md="7">
           <Navs
+            key="outOfDropdown"
             setcurrentuser={setcurrentuser}
             navArea={navArea}
             currentuser={currentuser}
