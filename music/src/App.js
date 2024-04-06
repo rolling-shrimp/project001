@@ -12,6 +12,7 @@ import Log from "./components/loginHom";
 import MusicPlauerList from "./pages/MusicPlauerList";
 import TeacherPage from "./pages/TeacherPage";
 import Swal from "sweetalert2";
+import GetCourseData from "./components/getCourseData";
 import "./components/styles/appJs/appjs.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 export const objectFromAppjs = createContext();
@@ -19,6 +20,7 @@ export const objectFromAppjs = createContext();
 function App() {
   let [currentuser, setcurrentuser] = useState(authService.getCurrentUser());
   const [location, setLocation] = useState("");
+  const data = GetCourseData(location, currentuser).courses;
   const navigate = useNavigate();
   const checkIfLogIn = useCallback(() => {
     setcurrentuser(authService.getCurrentUser());
@@ -26,6 +28,7 @@ function App() {
   useEffect(() => {
     checkIfLogIn();
   }, [checkIfLogIn]);
+
   const logout = () => {
     localStorage.removeItem("user");
     Swal.fire({ title: "登出成功，回到首頁", confirmButtonColor: "black" });
@@ -48,16 +51,6 @@ function App() {
           path="/"
           element={<Hompeage setLocation={setLocation} location={location} />}
         />
-        <Route
-          path="mcourse"
-          element={
-            <MuCourse
-              currentuser={currentuser}
-              setLocation={setLocation}
-              location={location}
-            />
-          }
-        ></Route>
 
         <Route
           path="/log"
@@ -74,8 +67,18 @@ function App() {
           element={<User setLocation={setLocation} location={location} />}
         />
       </Routes>
-      <objectFromAppjs.Provider value={{ setcurrentuser, currentuser }}>
+      <objectFromAppjs.Provider value={{ setcurrentuser, currentuser, data }}>
         <Routes>
+          <Route
+            path="mcourse"
+            element={
+              <MuCourse
+                currentuser={currentuser}
+                setLocation={setLocation}
+                location={location}
+              />
+            }
+          ></Route>
           <Route
             path="/signup"
             element={<SingnUp setLocation={setLocation} />}

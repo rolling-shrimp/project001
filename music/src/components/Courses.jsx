@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import GetCourseData from "./getCourseData";
 import "../components/styles/Curriculum/Curriculum.css";
 import { Row, Col, Card, Container, Spinner } from "react-bootstrap";
@@ -6,9 +6,9 @@ import "animate.css";
 import Swal from "sweetalert2";
 import profileServicing from "../service/profile_Service";
 import { filterCourses } from "./checkIfEnrolled";
+import { objectFromAppjs } from "../App";
 const Courses = ({ location, currentuser }) => {
-  let courses;
-  courses = GetCourseData(location, currentuser).courses;
+  const { data } = useContext(objectFromAppjs);
 
   const enrollCourse = (_id) => {
     if (!currentuser.token || currentuser.user.role !== "student") {
@@ -78,9 +78,9 @@ const Courses = ({ location, currentuser }) => {
         </Col>
         <Col md="3"></Col>
       </Row>
-      {courses.length !== 0 ? (
+      {data.length !== 0 ? (
         <Row md={12} className="px-5 ">
-          {courses.map((item) => (
+          {data.map((item) => (
             <Col key={item.title} className="p-2" md={4}>
               <Card>
                 <Card.Body>
