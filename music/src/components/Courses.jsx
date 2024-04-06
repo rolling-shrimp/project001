@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-import GetCourseData from "./getCourseData";
 import "../components/styles/Curriculum/Curriculum.css";
 import { Row, Col, Card, Container, Spinner } from "react-bootstrap";
 import "animate.css";
