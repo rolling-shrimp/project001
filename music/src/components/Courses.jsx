@@ -1,7 +1,7 @@
 import React from "react";
 import GetCourseData from "./getCourseData";
 import "../components/styles/Curriculum/Curriculum.css";
-import { Row, Col, Card, Container } from "react-bootstrap";
+import { Row, Col, Card, Container, Spinner } from "react-bootstrap";
 import "animate.css";
 import Swal from "sweetalert2";
 import profileServicing from "../service/profile_Service";
@@ -78,33 +78,56 @@ const Courses = ({ location, currentuser }) => {
         </Col>
         <Col md="3"></Col>
       </Row>
-      <Row md={12} className="px-5 ">
-        {courses.map((item) => (
-          <Col key={item.title} className="p-2" md={4}>
-            <Card>
-              <Card.Body>
-                <Card.Title>{item.title}</Card.Title>
-                <Card.Text>{item.description}</Card.Text>
-                <p>價錢: {item.price}</p>
-                <p>地點: {item.place}</p>
-                <p>日期: {item.date.split("T")[0]}</p>
-                {location !== "/personalPage" && (
-                  <button
-                    onClick={() => {
-                      enrollCourse(item._id);
-                    }}
-                    disabled={filterCourses(item.students, currentuser.user.id)}
-                  >
-                    {filterCourses(item.students, currentuser.user.id)
-                      ? "已報名"
-                      : "報名"}
-                  </button>
-                )}
-              </Card.Body>
-            </Card>
+      {courses.length !== 0 ? (
+        <Row md={12} className="px-5 ">
+          {courses.map((item) => (
+            <Col key={item.title} className="p-2" md={4}>
+              <Card>
+                <Card.Body>
+                  <Card.Title>{item.title}</Card.Title>
+                  <Card.Text>{item.description}</Card.Text>
+                  <p>價錢: {item.price}</p>
+                  <p>地點: {item.place}</p>
+                  <p>日期: {item.date.split("T")[0]}</p>
+                  {location !== "/personalPage" && (
+                    <button
+                      onClick={() => {
+                        enrollCourse(item._id);
+                      }}
+                      disabled={filterCourses(
+                        item.students,
+                        currentuser.user.id
+                      )}
+                    >
+                      {filterCourses(item.students, currentuser.user.id)
+                        ? "已報名"
+                        : "報名"}
+                    </button>
+                  )}
+                </Card.Body>
+              </Card>
+            </Col>
+          ))}
+        </Row>
+      ) : (
+        <Row>
+          <Col md={4}></Col>
+          <Col
+            className="d-flex flex-column align-items-center justify-content-center h-50"
+            md={4}
+          >
+            <h3>
+              {" "}
+              後端api是架設在免費的server上，會有server休眠時間，大概一分鐘，請耐心等候
+            </h3>
+            <Spinner animation="border" role="status">
+              <span className="visually-hidden">Loading...</span>
+            </Spinner>
           </Col>
-        ))}
-      </Row>
+          <Col md={4}></Col>
+        </Row>
+      )}
+
       <Row className="topDownRow"></Row>
     </Container>
   );
