@@ -29,9 +29,9 @@ router.get("/student/:_student_id", async (req, res) => {
     let coursesEnrolledOrNot = theCourses.sort((a, b) => {
       a = a.students.find((student) => student._id === _student_id);
       if (a) {
-        return 1;
-      } else {
         return -1;
+      } else {
+        return 1;
       }
     });
     res.status(200).send(coursesEnrolledOrNot);

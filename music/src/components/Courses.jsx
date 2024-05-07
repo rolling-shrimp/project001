@@ -103,7 +103,6 @@ const Courses = ({ location, currentuser }) => {
                       {filterCourses(item.students, currentuser.user.id)
                         ? "已報名"
                         : "報名"}
-                      報名
                     </button>
                   )}
                 </Card.Body>
