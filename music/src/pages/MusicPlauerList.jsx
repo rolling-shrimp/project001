@@ -45,31 +45,39 @@ const MusicPlauerList = ({ setLocation }) => {
         >
           {" "}
           <Main>
-            {track.musics.map((item) => (
-              <div
-                style={{ border: "solid 1px black" }}
-                className="w-75 p-1 mb-2"
-              >
-                <h2>{item.name} &nbsp; </h2>
-                <audio src={item.src} controls></audio>
-                <div>
-                  <p>
-                    <span>By &nbsp;</span>
-                    <span style={{ textDecoration: "underline" }}>
-                      {item.author}
-                    </span>
-                    <span>&nbsp;</span>
-                    <a href={item.ahthorLink}>
-                      <img
-                        className="imgIcon"
-                        src={require("../components/assets/instagram.png")}
-                        alt="instagram"
-                      />
-                    </a>
-                  </p>
-                </div>
-              </div>
-            ))}
+            <Container fluid>
+              <Row md={12}>
+                <Col md={3}></Col>
+                <Col md={6}>
+                  {track.musics.map((item) => (
+                    <div
+                      style={{ border: "solid 1px black" }}
+                      className="w-100 p-1 mb-2"
+                    >
+                      <h2>{item.name} &nbsp; </h2>
+                      <audio src={item.src} controls></audio>
+                      <div>
+                        <p>
+                          <span>By &nbsp;</span>
+                          <span style={{ textDecoration: "underline" }}>
+                            {item.author}
+                          </span>
+                          <span>&nbsp;</span>
+                          <a href={item.ahthorLink}>
+                            <img
+                              className="imgIcon"
+                              src={require("../components/assets/instagram.png")}
+                              alt="instagram"
+                            />
+                          </a>
+                        </p>
+                      </div>
+                    </div>
+                  ))}
+                </Col>
+                <Col md={3}></Col>
+              </Row>
+            </Container>
           </Main>
         </Col>
       </Row>

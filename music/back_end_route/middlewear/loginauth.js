@@ -23,23 +23,18 @@ router.get("/instructor/:instructor_id", (req, res) => {
 //find the courses students has enrolled
 router.get("/student/:_student_id", async (req, res) => {
   let { _student_id } = req.params;
-  console.log(_student_id);
+
   try {
     let theCourses = await Course.find({});
-    let filterCourses = theCourses.filter((item) => {
-      for (let obj of item.students) {
-        if (obj !== null && obj.id === _student_id) {
-          return true;
-        }
+    let coursesEnrolledOrNot = theCourses.sort((a, b) => {
+      let a = a.students.find((student) => student._id === _student_id);
+      if (a) {
+        return 1;
+      } else {
+        return -1;
       }
-      return false;
     });
-    let showCourse = filterCourses.map((item) => {
-      const { _id, title, description, price, date, place } = item;
-      return { _id, title, description, price, date, place };
-    });
-    console.log(showCourse);
-    res.status(200).send(showCourse);
+    res.status(200).send(coursesEnrolledOrNot);
   } catch (e) {
     console.error(e);
     res.status(500).send("無法找到課程");

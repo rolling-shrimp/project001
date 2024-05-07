@@ -23,7 +23,7 @@ const Navs = ({ currentuser, navArea, type }) => {
         </Nav.Item> */}
         <Nav.Item>
           <Nav.Link style={{ color: navArea.color }} href={"/mcourse"}>
-            課程報名
+            已開課課程
           </Nav.Link>
         </Nav.Item>
         {currentuser.token ? (

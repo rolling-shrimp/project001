@@ -82,13 +82,15 @@ const Courses = ({ location, currentuser }) => {
           {data.map((item) => (
             <Col key={item.title} className="p-2" md={4}>
               <Card>
-                <Card.Body>
+                <Card.Body style={{ height: "45vh" }}>
                   <Card.Title>{item.title}</Card.Title>
-                  <Card.Text>{item.description}</Card.Text>
+                  <Card.Text style={{ height: "10vh" }}>
+                    {item.description}
+                  </Card.Text>
                   <p>價錢: {item.price}</p>
                   <p>地點: {item.place}</p>
                   <p>日期: {item.date.split("T")[0]}</p>
-                  {location !== "/personalPage" && (
+                  {location === "/personalPage" && (
                     <button
                       onClick={() => {
                         enrollCourse(item._id);
@@ -101,6 +103,7 @@ const Courses = ({ location, currentuser }) => {
                       {filterCourses(item.students, currentuser.user.id)
                         ? "已報名"
                         : "報名"}
+                      報名
                     </button>
                   )}
                 </Card.Body>

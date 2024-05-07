@@ -1,5 +1,5 @@
 import React from "react";
-import { Figure, Nav } from "react-bootstrap";
+import { Figure, Nav, Button } from "react-bootstrap";
 import Main from "./Main";
 import { musicType } from "./musicTypeList";
 const Musicgenre = () => {
@@ -14,20 +14,19 @@ const Musicgenre = () => {
         <div className="w-100 d-flex flex-row align-items-center justify-content-evenly">
           {musicType.map((item) => (
             <Figure className="figureElement">
-              <Nav.Link
-                href={`player/${item.type}`}
-                rel="noreferrer"
-                target="blank"
-                style={{ display: "block" }}
-              >
-                <Figure.Image
-                  width={150}
-                  height={150}
-                  src={item.imgSrc}
-                  alt=""
-                />
-              </Nav.Link>
-              <Figure.Caption className="linkColor">{item.type}</Figure.Caption>
+              <Figure.Image width={150} height={150} src={item.imgSrc} alt="" />
+              <Figure.Caption className="linkColor">
+                <Button variant="light">
+                  <Nav.Link
+                    href={`player/${item.type}`}
+                    rel="noreferrer"
+                    target="blank"
+                    style={{ display: "block" }}
+                  >
+                    {item.type}
+                  </Nav.Link>
+                </Button>
+              </Figure.Caption>
             </Figure>
           ))}
         </div>
