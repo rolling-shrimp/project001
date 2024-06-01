@@ -11,6 +11,7 @@ const SingnUp = ({ setLocation }) => {
   const location = useLocation();
   const { data } = useContext(objectFromAppjs);
   TheCatchLocation(setLocation);
+
   return (
     <Container fluid>
       <TheTitle>

@@ -21,11 +21,11 @@ const Navs = ({ currentuser, navArea, type }) => {
             音樂音檔
           </Nav.Link>
         </Nav.Item> */}
-        <Nav.Item>
+        {/* <Nav.Item>
           <Nav.Link style={{ color: navArea.color }} href={"/mcourse"}>
             已開課課程
           </Nav.Link>
-        </Nav.Item>
+        </Nav.Item> */}
         {currentuser.token ? (
           <>
             <Nav.Item>
@@ -41,6 +41,11 @@ const Navs = ({ currentuser, navArea, type }) => {
           </>
         ) : (
           <>
+            <Nav.Item>
+              <Nav.Link style={{ color: navArea.color }} href={"/mcourse"}>
+                已開課課程
+              </Nav.Link>
+            </Nav.Item>
             <Nav.Item>
               <Nav.Link style={{ color: navArea.color }} href={"/signup"}>
                 註冊會員

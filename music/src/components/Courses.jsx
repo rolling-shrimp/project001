@@ -6,6 +6,7 @@ import Swal from "sweetalert2";
 import profileServicing from "../service/profile_Service";
 import { filterCourses } from "./checkIfEnrolled";
 import { objectFromAppjs } from "../App";
+import { cancelEnroll } from "./crudFunction";
 const Courses = ({ location, currentuser }) => {
   const { data } = useContext(objectFromAppjs);
 
@@ -67,10 +68,7 @@ const Courses = ({ location, currentuser }) => {
               className="h-100 d-flex flex-column align-items-center justify-content-center"
             >
               <h1>
-                {currentuser.user.role === "student"
-                  ? "你報名的課"
-                  : "你開的課"}
-                :
+                {currentuser.user.role === "student" ? "已開課程" : "你開的課"}:
               </h1>
             </div>
           )}
@@ -82,7 +80,7 @@ const Courses = ({ location, currentuser }) => {
           {data.map((item) => (
             <Col key={item.title} className="p-2" md={4}>
               <Card>
-                <Card.Body style={{ height: "45vh" }}>
+                <Card.Body style={{ height: "50vh" }}>
                   <Card.Title>{item.title}</Card.Title>
                   <Card.Text style={{ height: "10vh" }}>
                     {item.description}
@@ -91,19 +89,31 @@ const Courses = ({ location, currentuser }) => {
                   <p>地點: {item.place}</p>
                   <p>日期: {item.date.split("T")[0]}</p>
                   {location === "/personalPage" && (
-                    <button
-                      onClick={() => {
-                        enrollCourse(item._id);
-                      }}
-                      disabled={filterCourses(
-                        item.students,
-                        currentuser.user.id
+                    <>
+                      {filterCourses(item.students, currentuser.user.id) ? (
+                        <>
+                          <button disabled className="mr-3">
+                            已報名
+                          </button>
+                          <button
+                            onClick={() => {
+                              cancelEnroll(item._id);
+                            }}
+                            className="m-1"
+                          >
+                            取消報名
+                          </button>
+                        </>
+                      ) : (
+                        <button
+                          onClick={() => {
+                            enrollCourse(item._id);
+                          }}
+                        >
+                          報名
+                        </button>
                       )}
-                    >
-                      {filterCourses(item.students, currentuser.user.id)
-                        ? "已報名"
-                        : "報名"}
-                    </button>
+                    </>
                   )}
                 </Card.Body>
               </Card>

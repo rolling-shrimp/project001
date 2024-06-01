@@ -44,7 +44,7 @@ class profileService {
     } else {
       token = "";
     }
-    console.log(userInf);
+
     const { id, name, mail, phone } = userInf.user;
     const studentInf = { id, name, mail, phone };
     return axios.post(
@@ -64,6 +64,27 @@ class profileService {
         Authorization: token,
       },
     });
+  }
+  notEnroll(_id) {
+    let userInf;
+    let token;
+    if (localStorage.getItem("user")) {
+      userInf = JSON.parse(localStorage.getItem("user"));
+      token = userInf.token;
+    } else {
+      token = "";
+    }
+    const { id } = userInf.user;
+    const studentInf = { id };
+    return axios.put(
+      `${API_URL}/cancelEnroll/${_id}`,
+      { studentInf },
+      {
+        headers: {
+          Authorization: token,
+        },
+      }
+    );
   }
 }
 let profileServicing = new profileService();

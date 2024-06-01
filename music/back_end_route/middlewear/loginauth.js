@@ -81,6 +81,20 @@ router.post("/enroll/:_id", async (req, res) => {
   }
 });
 
+router.put("/cancelEnroll/:_id", async (req, res) => {
+  let { _id } = req.params;
+  let { studentInf } = req.body;
+
+  try {
+    let course = await Course.findOne({ _id });
+    course.students.filter((student) => student.id !== studentInf.id);
+    await course.save();
+    res.status(200);
+  } catch (err) {
+    res.send(err);
+  }
+});
+
 router.get("/musicCourr", (req, res) => {
   Course.find({})
     .then((data) => {
