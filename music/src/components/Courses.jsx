@@ -34,7 +34,8 @@ const Courses = ({ location, currentuser }) => {
             confirmButtonColor: "black",
             icon: "success",
           });
-          window.location = "/mcourse";
+
+          window.location = "/personalPage";
         });
       })
       .catch((e) => {

@@ -48,13 +48,14 @@ export const cancelEnroll = (_id) => {
   })
     .then(() => {
       profileServicing.notEnroll(_id).then((response) => {
+        console.log(response);
         Swal.fire({
           icon: "success",
           title: "取消報名成功",
           confirmButtonColor: "black",
           confirmButtonText: "確定",
         }).then(() => {
-          window.location = "/mcourse";
+          window.location = "/personalPage";
         });
       });
     })

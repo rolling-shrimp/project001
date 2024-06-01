@@ -89,7 +89,7 @@ router.put("/cancelEnroll/:_id", async (req, res) => {
     let course = await Course.findOne({ _id });
     course.students = course.students.filter((student) => student.id !== id);
     await course.save();
-    res.status(200);
+    res.sendStatus(200);
   } catch (err) {
     res.send(err);
   }
