@@ -83,11 +83,12 @@ router.post("/enroll/:_id", async (req, res) => {
 
 router.put("/cancelEnroll/:_id", async (req, res) => {
   let { _id } = req.params;
-  let { studentInf } = req.body;
+  let { id } = req.body;
 
   try {
     let course = await Course.findOne({ _id });
-    course.students.filter((student) => student.id !== studentInf.id);
+    course.students.filter((student) => student.id !== id);
+
     await course.save();
     res.status(200);
   } catch (err) {

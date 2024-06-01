@@ -76,15 +76,11 @@ class profileService {
     }
     const { id } = userInf.user;
     const studentInf = { id };
-    return axios.put(
-      `${API_URL}/cancelEnroll/${_id}`,
-      { studentInf },
-      {
-        headers: {
-          Authorization: token,
-        },
-      }
-    );
+    return axios.put(`${API_URL}/cancelEnroll/${_id}`, studentInf, {
+      headers: {
+        Authorization: token,
+      },
+    });
   }
 }
 let profileServicing = new profileService();
