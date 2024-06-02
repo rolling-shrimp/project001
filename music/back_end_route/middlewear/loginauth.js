@@ -67,7 +67,7 @@ router.post("/", async (req, res) => {
 
 router.delete("/deleteCourse/:_id", async (req, res) => {
   try {
-    await Course.findByIdAndDelete(req.params._id);
+    await Course.deleteOne({ _id: req.params._id });
     res.sendStatus(200);
   } catch (e) {
     console.error(e);

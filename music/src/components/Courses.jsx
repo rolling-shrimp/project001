@@ -6,7 +6,7 @@ import Swal from "sweetalert2";
 import profileServicing from "../service/profile_Service";
 import { filterCourses } from "./checkIfEnrolled";
 import { objectFromAppjs } from "../App";
-import { cancelEnroll } from "./crudFunction";
+import { cancelEnroll, deleteCourse } from "./crudFunction";
 const Courses = ({ location, currentuser }) => {
   const { data } = useContext(objectFromAppjs);
 
@@ -110,7 +110,7 @@ const Courses = ({ location, currentuser }) => {
                           {currentuser.user.role === "instructor" ? (
                             <button
                               onClick={() => {
-                                cancelEnroll(item._id);
+                                deleteCourse(item._id);
                                 window.location.reload();
                               }}
                             >
