@@ -74,13 +74,21 @@ class profileService {
     } else {
       token = "";
     }
-    const { id } = userInf.user;
-    const studentInf = { id };
-    return axios.put(`${API_URL}/cancelEnroll/${_id}`, studentInf, {
-      headers: {
-        Authorization: token,
-      },
-    });
+    const { id, role } = userInf.user;
+    if (role === "instructor") {
+      return axios.delete(`${API_URL}/deleteCourse/${_id}`, {
+        headers: {
+          Authorization: token,
+        },
+      });
+    } else {
+      const studentInf = { id };
+      return axios.put(`${API_URL}/cancelEnroll/${_id}`, studentInf, {
+        headers: {
+          Authorization: token,
+        },
+      });
+    }
   }
 }
 let profileServicing = new profileService();

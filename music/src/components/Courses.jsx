@@ -106,13 +106,26 @@ const Courses = ({ location, currentuser }) => {
                           </button>
                         </>
                       ) : (
-                        <button
-                          onClick={() => {
-                            enrollCourse(item._id);
-                          }}
-                        >
-                          報名
-                        </button>
+                        <>
+                          {currentuser.user.role === "instructor" ? (
+                            <button
+                              onClick={() => {
+                                cancelEnroll(item._id);
+                                window.location.reload();
+                              }}
+                            >
+                              刪除課程
+                            </button>
+                          ) : (
+                            <button
+                              onClick={() => {
+                                enrollCourse(item._id);
+                              }}
+                            >
+                              報名
+                            </button>
+                          )}
+                        </>
                       )}
                     </>
                   )}

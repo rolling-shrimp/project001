@@ -69,3 +69,34 @@ export const cancelEnroll = (_id) => {
       });
     });
 };
+export const deleteCourse = (_id) => {
+  Swal.fire({
+    title: "確定要刪除課程嗎?",
+    confirmButtonText: "確定",
+    confirmButtonColor: "black",
+    cancelButtonText: "取消",
+    cancelButtonColor: "gray",
+  })
+    .then((result) => {
+      // 刪除課程
+      profileServicing.notEnroll(_id).then((response) => {
+        console.log(response);
+        Swal.fire({
+          icon: "success",
+          title: "刪除課程成功",
+          confirmButtonColor: "black",
+          confirmButtonText: "確定",
+        }).then(() => {
+          window.location = "/personalPage";
+        });
+      });
+    })
+    .catch((e) => {
+      console.log(e);
+      Swal.fire({
+        title: "刪除失敗發生錯誤",
+        confirmButtonColor: "black",
+        icon: "error",
+      });
+    });
+};
