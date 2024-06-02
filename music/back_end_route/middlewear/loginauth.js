@@ -26,15 +26,16 @@ router.get("/student/:_student_id", async (req, res) => {
 
   try {
     let theCourses = await Course.find({});
-    let coursesEnrolledOrNot = theCourses.sort((a, b) => {
-      a = a.students.find((student) => student._id === _student_id);
-      if (a) {
+
+    theCourses.sort((a, b) => {
+      let A = a.students.find((student) => student.id === _student_id);
+
+      if (A) {
         return -1;
-      } else {
-        return 1;
       }
     });
-    res.status(200).send(coursesEnrolledOrNot);
+
+    res.status(200).send(theCourses);
   } catch (e) {
     console.error(e);
     res.status(500).send("無法找到課程");

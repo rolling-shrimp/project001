@@ -38,9 +38,9 @@ export const enrollCourse = (_id, currentuser) => {
     });
 };
 
-export const cancelEnroll = (_id) => {
+export const cancelEnroll = (_id, role) => {
   Swal.fire({
-    title: "確定要取消報名嗎?",
+    title: role === "student" ? "確定要取消報名嗎?" : "確定要刪除課程嗎?",
     confirmButtonText: "確定",
     confirmButtonColor: "black",
     cancelButtonText: "取消",
@@ -51,7 +51,7 @@ export const cancelEnroll = (_id) => {
         console.log(response);
         Swal.fire({
           icon: "success",
-          title: "取消報名成功",
+          title: role === "student" ? "取消報名成功" : "刪除課程成功",
           confirmButtonColor: "black",
           confirmButtonText: "確定",
         }).then(() => {

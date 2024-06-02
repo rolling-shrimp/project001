@@ -1,5 +1,6 @@
 import axios from "axios";
 let basicUrl = "https://project001-4x83.onrender.com/";
+// let basicUrl = "http://localhost:3502/";
 const API_URL = `${basicUrl}api/member`;
 class profileService {
   get(id) {
@@ -75,6 +76,7 @@ class profileService {
       token = "";
     }
     const { id, role } = userInf.user;
+    console.log(role);
     if (role === "instructor") {
       return axios.delete(`${API_URL}/deleteCourse/${_id}`, {
         headers: {

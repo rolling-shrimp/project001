@@ -6,7 +6,7 @@ import Swal from "sweetalert2";
 import profileServicing from "../service/profile_Service";
 import { filterCourses } from "./checkIfEnrolled";
 import { objectFromAppjs } from "../App";
-import { cancelEnroll, deleteCourse } from "./crudFunction";
+import { cancelEnroll } from "./crudFunction";
 const Courses = ({ location, currentuser }) => {
   const { data } = useContext(objectFromAppjs);
 
@@ -33,9 +33,9 @@ const Courses = ({ location, currentuser }) => {
             title: "報名成功",
             confirmButtonColor: "black",
             icon: "success",
+          }).then((result) => {
+            window.location = "/personalPage";
           });
-
-          window.location = "/personalPage";
         });
       })
       .catch((e) => {
@@ -98,7 +98,7 @@ const Courses = ({ location, currentuser }) => {
                           </button>
                           <button
                             onClick={() => {
-                              cancelEnroll(item._id);
+                              cancelEnroll(item._id, currentuser.user.role);
                             }}
                             className="m-1"
                           >
@@ -110,8 +110,7 @@ const Courses = ({ location, currentuser }) => {
                           {currentuser.user.role === "instructor" ? (
                             <button
                               onClick={() => {
-                                deleteCourse(item._id);
-                                window.location.reload();
+                                cancelEnroll(item._id, currentuser.user.role);
                               }}
                             >
                               刪除課程
