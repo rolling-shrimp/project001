@@ -16,16 +16,7 @@ const Navs = ({ currentuser, navArea, type }) => {
             首頁
           </Nav.Link>
         </Nav.Item>
-        {/* <Nav.Item>
-          <Nav.Link href={"#genre"} style={{ color: navArea.color }}>
-            音樂音檔
-          </Nav.Link>
-        </Nav.Item> */}
-        {/* <Nav.Item>
-          <Nav.Link style={{ color: navArea.color }} href={"/mcourse"}>
-            已開課課程
-          </Nav.Link>
-        </Nav.Item> */}
+
         {currentuser.token ? (
           <>
             <Nav.Item>

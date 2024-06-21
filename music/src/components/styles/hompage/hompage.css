@@ -71,6 +71,9 @@ iframe {
 }
 @media screen and (max-width: 576px) {
   .musicGenre {
-    min-height: 70vh;
+    min-height: 50vh;
+  }
+  .musicGenre button {
+    font-size: 0.8rem;
   }
 }/*# sourceMappingURL=hompage.css.map */

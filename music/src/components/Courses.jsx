@@ -80,12 +80,10 @@ const Courses = ({ location, currentuser }) => {
         <Row md={12} className="px-5 ">
           {data.map((item) => (
             <Col key={item.title} className="p-2" md={4}>
-              <Card>
-                <Card.Body style={{ height: "50vh" }}>
+              <Card className="h-100">
+                <Card.Body>
                   <Card.Title>{item.title}</Card.Title>
-                  <Card.Text style={{ height: "10vh" }}>
-                    {item.description}
-                  </Card.Text>
+                  <Card.Text>{item.description}</Card.Text>
                   <p>價錢: {item.price}</p>
                   <p>地點: {item.place}</p>
                   <p>日期: {item.date.split("T")[0]}</p>

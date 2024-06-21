@@ -7,14 +7,14 @@ const Musicgenre = () => {
     <Main>
       <div
         id="genre"
-        className="w-100 d-flex flex-column justify-content-start align-items-center px-5"
+        className="w-100 d-flex flex-column justify-content-start align-items-center "
       >
         <h1 className="mb-5">曲風類別</h1>
 
         <div className="w-100 d-flex flex-row align-items-center justify-content-evenly">
           {musicType.map((item) => (
             <Figure className="figureElement">
-              <Figure.Image width={150} height={150} src={item.imgSrc} alt="" />
+              <Figure.Image src={item.imgSrc} height={150} width={150} alt="" />
               <Figure.Caption className="linkColor">
                 <Button variant="light">
                   <Nav.Link

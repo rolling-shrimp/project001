@@ -9,6 +9,7 @@ import MuCourse from "./pages/MuCourse";
 import User from "./components/userData";
 import SingnUp from "./pages/SingnUp";
 import Log from "./components/loginHom";
+import Aboutme from "./components/Aboutme";
 import MusicPlauerList from "./pages/MusicPlauerList";
 import TeacherPage from "./pages/TeacherPage";
 import Swal from "sweetalert2";
@@ -51,7 +52,7 @@ function App() {
           path="/"
           element={<Hompeage setLocation={setLocation} location={location} />}
         />
-
+        <Route path="/Aboutme" element={<Aboutme />} />
         <Route
           path="/log"
           element={<Log setLocation={setLocation} location={location} />}
